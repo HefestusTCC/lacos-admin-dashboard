@@ -1,0 +1,104 @@
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; 
+        }
+
+.space {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 560px;
+  height: 500px;
+  text-align: center;
+
+}
+        .welcome{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 50%;
+          height: 100vh;
+          background-color: #ff7a28;
+        }
+
+        .welcome h1{
+          font-family: "Cabin", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 800;
+            font-style: normal;
+            margin-bottom: 20px;
+            color: #000000;
+            font-size: 30px;
+        }
+.div-img img{
+  width: 360px;
+  height: auto;
+}
+
+
+.container{
+  width: 50%;
+  background-color: #f8f8f8;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+        .login-container {        
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .login-container h2 {
+  font-family: "Cabin", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+  margin-bottom: 20px;
+  color: #000000;
+  font-size: 20px;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #000000;
+            border-radius: 5px;
+            height: 20px;
+            font-size: 15px;
+        }
+
+        .login-container button {
+              font-family: "PT Sans", sans-serif;
+              font-weight: 700;
+              font-style: normal;
+              color: #000000;
+            width: 100%;
+            padding: 10px;
+            background-color: #ff7a28;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .login-container button:hover {
+            background-color: #de7838;
+              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+      
+
+        .login-container a:hover {
+            text-decoration: underline;
+        }

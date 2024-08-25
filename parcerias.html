@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anunciantes</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" />
+    <link rel="stylesheet" href="css/parceria_style.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <aside>
+            <div class="top">
+                <div class="logo">
+                    <img src="./img/logo.png" alt="">
+                </div>
+                <div class="close" id="close_btn">
+                    <span class="material-symbols-sharp">close</span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <a href="principal.html">
+                    <span class="material-symbols-sharp">grid_view</span>
+                    <h3>Dashboard</h3>
+                </a>
+                <a href="users.html">
+                    <span class="material-symbols-sharp">group</span>
+                    <h3>Usuários</h3>
+                </a>
+                <a href="engajamento.html">
+                    <span class="material-symbols-sharp">query_stats</span>
+                    <h3>Engajamento</h3>
+                </a>
+                <a href="moderacao.html">
+                    <span class="material-symbols-sharp">add_moderator</span>
+                    <h3>Moderação</h3>
+                </a>
+                <a href="parcerias.html" class="active">
+                    <span class="material-symbols-sharp">storefront</span>
+                    <h3>Anunciantes</h3>
+                </a>
+                <a href="#">
+                    <span class="material-symbols-sharp">logout</span>
+                    <h3>Sair</h3>
+                </a>
+            </div>
+        </aside>
+        <!--end aside-->
+        <main>
+            <h1>Anunciantes</h1>
+            <div class="date">
+                <input type="date">
+            </div>
+            <!--1-->
+            <div class="parceria-container">
+                <div class="parceria-info">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSukaibUmzi_gXfeUIseRb4bAfXr2YAUPjLPQ&s" alt="Imagem da Parceria" class="parceria-image">
+                    <div class="parceria-details">
+                        <h2>CNA</h2>
+                    </div>
+                </div>
+                <div class="parceria-buttons">
+                    <button class="approve" >Aprovar</button>
+                    <button class="reject">Reprovar</button>
+                </div>
+            </div>
+            <!--2-->
+            <div class="parceria-container">
+                <div class="parceria-info">
+                    <img src="https://usemobile.com.br/wp-content/uploads/2022/01/Beelinguapp-logo-aplicativo.png" alt="Imagem da Parceria" class="parceria-image">
+                    <div class="parceria-details">
+                        <h2>Beelinguapp</h2>
+                    </div>
+                </div>
+                <div class="parceria-buttons">
+                    <button class="approve">Aprovar</button>
+                    <button class="reject">Reprovar</button>
+                </div>
+            </div>
+            <!--3-->
+            <div class="parceria-container">
+                <div class="parceria-info">
+                    <img src="https://midiasstoragesec.blob.core.windows.net/001/2022/11/cel-centro-de-linguas-sp-inscricoes-para-cursos-2017-5a3a75958c13e.jpg" alt="Imagem da Parceria" class="parceria-image">
+                    <div class="parceria-details">
+                        <h2>Centro de Línguas</h2>
+                    </div>
+                </div>
+                <div class="parceria-buttons">
+                    <button class="approve">Aprovar</button>
+                    <button class="reject">Reprovar</button>
+                </div>
+            </div>
+            <!--4-->
+            <div class="parceria-container">
+                <div class="parceria-info">
+                    <img src="https://images-platform.99static.com/UvWW_UabxhcKSoa-E2YXjwDHkRU=/607x286:1393x1072/500x500/top/smart/99designs-contests-attachments/131/131634/attachment_131634405" alt="Imagem da Parceria" class="parceria-image">
+                    <div class="parceria-details">
+                        <h2>EDUP</h2>
+                    </div>
+                </div>
+                <div class="parceria-buttons">
+                    <button class="approve">Aprovar</button>
+                    <button class="reject">Reprovar</button>
+                </div>
+            </div>
+        </main>
+        <!--end main-->
+        <div class="right">
+            <div class="top">
+                <button id="menu_btn">
+                    <span class="material-symbols-sharp"> menu</span>
+                </button>
+                <div class="theme-toggler">
+                    <span class="material-symbols-sharp active">light_mode</span>
+                    <span class="material-symbols-sharp">dark_mode</span>
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        <p>Olá, <b>Marina</b></p>
+                        <small class="text-muted">Admin</small>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="https://qph.cf2.quoracdn.net/main-qimg-f1f534fd992d4bbbd1b5c2bfb0b640a5-lq" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./js/grafico.js"></script>
+    <script type="text/javascript" src="./js/card_dashboad.js"></script>
+    <script type="text/javascript" src="./js/index.js"></script>
+</body>
+
+</html>

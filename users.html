@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuários</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" />
+    <link rel="stylesheet" href="css/users_style.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 
+</head>
+<body>
+    <div class="container">
+        <aside>
+            <div class="top">
+                <div class="logo">
+                    <img src="./img/logo.png" alt="">
+                </div>
+                <div class="close" id="close_btn">
+                    <span class="material-symbols-sharp">close</span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <a href="principal.html"  >
+                    <span class="material-symbols-sharp">grid_view</span>
+                    <h3>Dashboard</h3>
+                </a>
+                <a href="users.html" class="active">
+                    <span class="material-symbols-sharp">group</span>
+                    <h3>Usuários</h3>
+                </a>
+                <a href="engajamento.html">
+                    <span class="material-symbols-sharp">query_stats</span>
+                    <h3>Engajamento</h3>
+                </a>
+                <a href="moderacao.html">
+                    <span class="material-symbols-sharp">add_moderator</span>
+                    <h3>Moderação</h3>
+                </a>
+                <a href="parcerias.html">
+                    <span class="material-symbols-sharp">storefront</span>
+                    <h3>Anunciantes</h3>
+                </a>
+                <a href="#">
+                    <span class="material-symbols-sharp">logout</span>
+                    <h3>Sair</h3>
+                </a>
+            </div>
+        </aside>
+        <!--end aside-->
+        <main>
+            <h1>Usuários</h1>
+            <div class="date">
+                <input type="date">
+            </div>
+            <!--1-->
+            <div class="insights">
+                <!-- Total de Usuários -->
+                <div class="users">
+                    <span class="material-symbols-sharp">person</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Total de Usuários</h3>
+                            <h1 id="total-users">0</h1>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx="38" cy="36" r="36"></circle>
+                            </svg>
+                            <div class="number">
+                                <p id="total-users-percentage">0%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="text-muted">Últimas 24 horas</small>
+                </div>
+                
+                <!-- Novos Usuários -->
+                <div class="new_users">
+                    <span class="material-symbols-sharp">person_add</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Novos Usuários</h3>
+                            <h1 id="new-users">0</h1>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx="38" cy="36" r="36"></circle>
+                            </svg>
+                            <div class="number">
+                                <p id="new-users-percentage">0%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="text-muted">Últimas 24 horas</small>
+                </div>
+                
+                <!-- Postagens Recentes -->
+                <div class="new_post">
+                    <span class="material-symbols-sharp">record_voice_over</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Usuários Online</h3>
+                            <h1 id="online_users">0</h1>
+                        </div>
+                    </div>
+                    <small class="text-muted">Últimas 24 horas</small>
+                </div>
+            </div> 
+            <div class="posts">
+                <h2>Quantidade de Usuários Mensal</h2>
+                <div id="chart_div"></div>          
+            </div> 
+        </main>
+        <!--end main-->
+        <div class="right">
+            <div class="top">
+                <button id="menu_btn">
+                    <span class="material-symbols-sharp"> menu</span>
+                </button>
+                <div class="theme-toggler">
+                    <span class="material-symbols-sharp active">light_mode</span>
+                    <span class="material-symbols-sharp">dark_mode</span>
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        <p>Olá, <b>Marina</b></p>
+                        <small class="text-muted">Admin</small>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="https://qph.cf2.quoracdn.net/main-qimg-f1f534fd992d4bbbd1b5c2bfb0b640a5-lq" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./js/grafico.js"></script> 
+    <script type="text/javascript" src="./js/card_user.js"></script> 
+    <script type="text/javascript" src="./js/index.js"></script>
+</body>
+</html>
