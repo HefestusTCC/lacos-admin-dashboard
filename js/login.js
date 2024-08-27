@@ -15,9 +15,14 @@ form.addEventListener('submit', e => {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(loginRequest)
     }).then(res => {
-        return res.json();
+        if(res.status == 200){
+            return res.json();
+        }
     }).then(data => {
-        console.log(data);
+        sessionStorage.setItem("token", data.accessToken);
+        sessionStorage.setItem("expiration", data.expiresIn);
+        sessionStorage.setItem("user", JSON.stringify(data.user));
+        window.location.href = "dashboard.html";
     })
     .catch(error => {
         console.log(error);
