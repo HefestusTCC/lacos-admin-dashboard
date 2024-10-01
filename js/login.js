@@ -9,7 +9,6 @@ form.addEventListener('submit', e => {
         email: email,
         password: password
     }
-    console.log(loginRequest);
     fetch(`${SERVER_IP}/admin/login`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},

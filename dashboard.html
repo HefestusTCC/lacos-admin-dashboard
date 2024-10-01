@@ -6,7 +6,7 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" />
     <link rel="stylesheet" href="css/dashboard_style.css">
-    <script type="module" src="https://www.gstatic.com/charts/loader.js"></script> 
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 
 </head>
 <body>
     <div class="container">
@@ -24,6 +24,14 @@
                 <a href="dashboard.html"  class="active">
                     <span class="material-symbols-sharp">grid_view</span>
                     <h3>Dashboard</h3>
+                </a>
+                <a href="admin.html">
+                    <span class="material-symbols-sharp">man</span>
+                    <h3>Admin</h3>
+                </a>
+                 <a href="usuario.html">
+                    <span class="material-symbols-sharp">person</span>
+                    <h3>Usuário</h3>
                 </a>
                 <a href="users.html">
                     <span class="material-symbols-sharp">group</span>
@@ -45,6 +53,7 @@
                     <span class="material-symbols-sharp">logout</span>
                     <h3>Sair</h3>
                 </a>
+                
             </div>
         </aside>
         <!--end aside-->
@@ -63,14 +72,6 @@
                             <h3>Total de Usuários</h3>
                             <h1 id="total-users">0</h1>
                         </div>
-                        <div class="progress">
-                            <svg>
-                                <circle cx="38" cy="36" r="36"></circle>
-                            </svg>
-                            <div class="number">
-                                <p id="total-users-percentage">0%</p>
-                            </div>
-                        </div>
                     </div>
                     <small class="text-muted">Últimas 24 horas</small>
                 </div>
@@ -83,14 +84,6 @@
                             <h3>Novos Usuários</h3>
                             <h1 id="new-users">0</h1>
                         </div>
-                        <div class="progress">
-                            <svg>
-                                <circle cx="38" cy="36" r="36"></circle>
-                            </svg>
-                            <div class="number">
-                                <p id="new-users-percentage">0%</p>
-                            </div>
-                        </div>
                     </div>
                     <small class="text-muted">Últimas 24 horas</small>
                 </div>
@@ -102,14 +95,6 @@
                         <div class="left">
                             <h3>Postagens Recentes</h3>
                             <h1 id="recent-posts">0</h1>
-                        </div>
-                        <div class="progress">
-                            <svg>
-                                <circle cx="38" cy="36" r="36"></circle>
-                            </svg>
-                            <div class="number">
-                                <p id="recent-posts-percentage">0%</p>
-                            </div>
                         </div>
                     </div>
                     <small class="text-muted">Últimas 24 horas</small>
@@ -142,9 +127,9 @@
             </div>
         </div>
     </div>
-    <script type="module" src="./js/grafico.js"></script> 
-    <script type="module" src="./js/card_index.js"></script> 
-    <script type="module" src="./js/dashboard.js"></script>
-    <script type="module" src="./js/userData.js"></script>
+    <script type="module" src="./js/grafico_post_trimestral.js"></script> 
+    <script type="text/javascript" src="./js/card_index.js"></script> 
+    <script type="text/javascript" src="./js/dashboard.js"></script>
+    <script type="text/javascript" src="./js/userData.js"></script>
 </body>
 </html>

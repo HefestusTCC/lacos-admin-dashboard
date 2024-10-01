@@ -1,4 +1,3 @@
-
 const sideMenu = document.querySelector("aside");
 const menuBtn = document.querySelector("#menu_btn");
 const closeBtn = document.querySelector("#close_btn");
@@ -32,7 +31,4 @@ window.addEventListener('resize', function() {
         document.querySelector('aside').style.display = 'none';
     }
 });
-
- 
-
 

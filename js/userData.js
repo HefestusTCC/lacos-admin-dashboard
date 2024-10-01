@@ -1,5 +1,4 @@
 const user = JSON.parse(sessionStorage.getItem("user"));
-console.log(user);
 
 const adminName = document.querySelector('#adminName');
 if (user.name.includes(' ')){

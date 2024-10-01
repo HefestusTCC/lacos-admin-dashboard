@@ -1,49 +1,30 @@
-import apiFetch from './api.js'; 
-try {
-    const response = await apiFetch('/report/users/all');
-    const data = await response.json();
-    console.log(data)
-    document.getElementById('total-users').innerText = data.data;
-  } catch (error) {
-    console.error('Erro ao buscar dados do usuário:', error);
-}
-
-try {
-    const response = await apiFetch('/report/users/new-since?date=2024-09-01T00:00:00');
-    const data = await response.json();
-    console.log(data)
-    document.getElementById('new-users').innerText = data.data;
-  } catch (error) {
-    console.error('Erro ao buscar dados do usuário:', error);
-}
-
-try {
-    const response = await apiFetch('/report/posts/last-24-hours');
-    const data = await response.json();
-    console.log(data)
-    document.getElementById('new-users').innerText = data.data;
-  } catch (error) {
-    console.error('Erro ao buscar dados do usuário:', error);
-}
-
-
-document.addEventListener('DOMContentLoaded', function() {
-    const data = {
-        totalUsers: 56,
-        totalUsersPercentage: 100,
-        newUsers: 5,
-        totalOnline: 10
-    };
-
-    // Função para atualizar os valores na página
-    function updateDashboard(data) {
-        document.getElementById('total-users').innerText = data.totalUsers;
-        
-        document.getElementById('new-users').innerText = data.newUsers;
-        document.getElementById('new-users-percentage').innerText = ((data.newUsers / data.totalUsers) * 100).toFixed(1) + '%';
-        
-        document.getElementById('online_users').innerText = data.totalOnline;
-    }
-
-    updateDashboard(data);
+import apiFetch from './api.js';
+const dataAtual = new Date();
+document.addEventListener('DOMContentLoaded', async function () {
+  async function updateDashboard() {
+    document.getElementById('total-users').innerText = await getUserCount();
+    document.getElementById('new-users').innerText = await getNewUsersSince(dataAtual.toISOString().split('.')[0]);
+  }
+  updateDashboard();
 });
+
+
+async function getUserCount() {
+  try {
+    const response = await apiFetch('/report/users/count');
+    const data = await response.json();
+    return data.data;
+  } catch (error) {
+    console.error('Erro ao buscar dados do usuário:', error);
+  }
+}
+
+async function getNewUsersSince(date) {
+  try {
+    const response = await apiFetch(`/report/users/new-since?date=${date}`);
+    const data = await response.json();
+    return data.data;
+  } catch (error) {
+    console.error('Erro ao buscar dados do usuário:', error);
+  }
+}

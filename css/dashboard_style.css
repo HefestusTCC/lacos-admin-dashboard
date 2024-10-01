@@ -462,6 +462,7 @@ main .posts #chart_div {
     }
 
     main .posts .chart_div{
+        background-color: var (--color-dark);
         width: 94%;
         position: absolute;
         left: 50%;

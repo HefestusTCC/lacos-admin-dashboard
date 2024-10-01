@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usuários</title>
+    <title>Total de Usuários</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" />
     <link rel="stylesheet" href="css/users_style.css">
-    <script type="module" src="https://www.gstatic.com/charts/loader.js"></script> 
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 
 </head>
 <body>
     <div class="container">
@@ -25,9 +25,17 @@
                     <span class="material-symbols-sharp">grid_view</span>
                     <h3>Dashboard</h3>
                 </a>
+                 <a href="admin.html">
+                    <span class="material-symbols-sharp">man</span>
+                    <h3>Admin</h3>
+                </a>
+                <a href="usuario.html">
+                    <span class="material-symbols-sharp">person</span>
+                    <h3>Usuário</h3>
+                </a>
                 <a href="users.html" class="active">
                     <span class="material-symbols-sharp">group</span>
-                    <h3>Usuários</h3>
+                    <h3>Total Usuários</h3>
                 </a>
                 <a href="engajamento.html">
                     <span class="material-symbols-sharp">query_stats</span>
@@ -49,7 +57,7 @@
         </aside>
         <!--end aside-->
         <main>
-            <h1>Usuários</h1>
+            <h1>Total Usuários</h1>
             <div class="date">
                 <input type="date">
             </div>
@@ -63,14 +71,6 @@
                             <h3>Total de Usuários</h3>
                             <h1 id="total-users">0</h1>
                         </div>
-                        <div class="progress">
-                            <svg>
-                                <circle cx="38" cy="36" r="36"></circle>
-                            </svg>
-                            <div class="number">
-                                <p id="total-users-percentage">0%</p>
-                            </div>
-                        </div>
                     </div>
                     <small class="text-muted">Últimas 24 horas</small>
                 </div>
@@ -83,32 +83,16 @@
                             <h3>Novos Usuários</h3>
                             <h1 id="new-users">0</h1>
                         </div>
-                        <div class="progress">
-                            <svg>
-                                <circle cx="38" cy="36" r="36"></circle>
-                            </svg>
-                            <div class="number">
-                                <p id="new-users-percentage">0%</p>
-                            </div>
-                        </div>
+                        
                     </div>
                     <small class="text-muted">Últimas 24 horas</small>
                 </div>
                 
                 <!-- Postagens Recentes -->
-                <div class="new_post">
-                    <span class="material-symbols-sharp">record_voice_over</span>
-                    <div class="middle">
-                        <div class="left">
-                            <h3>Usuários Online</h3>
-                            <h1 id="online_users">0</h1>
-                        </div>
-                    </div>
-                    <small class="text-muted">Últimas 24 horas</small>
-                </div>
+           
             </div> 
             <div class="posts">
-                <h2>Quantidade de Usuários Mensal</h2>
+                <h2>Quantidade de Usuários Trimestral</h2>
                 <div id="chart_div"></div>          
             </div> 
         </main>

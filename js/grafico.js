@@ -1,8 +1,9 @@
-// chart.js
+import apiFetch from './api.js';
+
 google.charts.load('current', { packages: ['corechart'] });
 google.charts.setOnLoadCallback(drawChart);
 
-function drawChart() {
+async function drawChart() {
     var options = {
         width: '100%', // Faz o gráfico ocupar a largura total
         height: 500,   // Ajuste a altura conforme necessário
@@ -13,11 +14,12 @@ function drawChart() {
         ['Junho', 150],
         ['Julho', 160],
         ['Agosto', 175],
-        // Adicione mais meses e dados conforme necessário
+        ['Setembro', 185],
+        
     ]);
 
     var options = {
-        title: 'Número de Postagens Mensal',
+        title: 'Crescimento de usuários trimestral',
         chartArea: { width: '50%' },
         hAxis: {
             title: 'Número de Usuários',
@@ -33,4 +35,8 @@ function drawChart() {
 
     var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
     chart.draw(data, options);
+}
+
+async function getUsersLastThreeMonths(){
+
 }

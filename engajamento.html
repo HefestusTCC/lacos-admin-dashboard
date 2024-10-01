@@ -6,7 +6,7 @@
     <title>Engajamento</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" />
     <link rel="stylesheet" href="css/dashboard_style.css">
-    <script type="module" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="module/javascript" src=""></script> 
 </head>
 <body>
@@ -25,6 +25,14 @@
                 <a href="dashboard.html" >
                     <span class="material-symbols-sharp">grid_view</span>
                     <h3>Dashboard</h3>
+                </a>
+                 <a href="admin.html">
+                    <span class="material-symbols-sharp">man</span>
+                    <h3>Admin</h3>
+                </a>
+                <a href="usuario.html">
+                    <span class="material-symbols-sharp">person</span>
+                    <h3>Usuário</h3>
                 </a>
                 <a href="users.html">
                     <span class="material-symbols-sharp">group</span>
@@ -63,14 +71,7 @@
                             <h3>Total de Interações</h3>
                             <h1 id="total_interacao">0</h1>
                         </div>
-                        <div class="progress">
-                            <svg>
-                                <circle cx="38" cy="36" r="36"></circle>
-                            </svg>
-                            <div class="number">
-                                <p id="total_percentage">0%</p>
-                            </div>
-                        </div>
+                       
                     </div>
                     <small class="text-muted">Últimas 24 horas</small>
                 </div>
@@ -82,14 +83,7 @@
                             <h3>Curtidas Recentes</h3>
                             <h1 id="total_curtidas">0</h1>
                         </div>
-                        <div class="progress">
-                            <svg>
-                                <circle cx="38" cy="36" r="36"></circle>
-                            </svg>
-                            <div class="number">
-                                <p id="curtidas_percentage">0%</p>
-                            </div>
-                        </div>
+                       
                     </div>
                     <small class="text-muted">Últimas 24 horas</small>
                 </div>
@@ -102,14 +96,7 @@
                             <h3>Comentários Recentes</h3>
                             <h1 id="total_comentario">0</h1>
                         </div>
-                        <div class="progress">
-                            <svg>
-                                <circle cx="38" cy="36" r="36"></circle>
-                            </svg>
-                            <div class="number">
-                                <p id="comentario_percentage">0%</p>
-                            </div>
-                        </div>
+                        
                     </div>
                     <small class="text-muted">Últimas 24 horas</small>
                 </div>
@@ -141,9 +128,9 @@
             </div>
         </div>
     </div>
-    <script type="module" src="./js/grafico_engajamento.js"></script> 
-    <script type="module" src="./js/card_engajamento.js"></script> 
-    <script type="module" src="./js/dashboard.js"></script>
-    <script type="module" src="./js/userData.js"></script>
+    <script type="text/javascript" src="./js/grafico_engajamento.js"></script> 
+    <script type="text/javascript" src="./js/card_engajamento.js"></script> 
+    <script type="text/javascript" src="./js/dashboard.js"></script>
+    <script type="text/javascript" src="./js/userData.js"></script>
 </body>
 </html>

@@ -5,10 +5,11 @@ google.charts.setOnLoadCallback(drawChart);
 function drawChart() {
     // Criar dados fictícios
     var data = google.visualization.arrayToDataTable([
-        ['Mês', 'Postagens'],
-        ['Jun',  60],
-        ['Jul',  50],
-        ['Ago',  76],
+      ["Mês", "Postagens"],
+      ["Jun", 60],
+      ["Jul", 50],
+      ["Ago", 76],
+      ["Set", 80],
     ]);
 
     // Configurações do gráfico
@@ -36,7 +37,8 @@ function drawChart() {
                 lineDashStyle: [4, 4]  // Linha pontilhada
             }
         },
-        backgroundColor: '#f1f8e9'  // Cor de fundo do gráfico
+        backgroundColor: '#f1f8e9'
+        // Cor de fundo do gráfico
     };
 
     // Criar o gráfico
