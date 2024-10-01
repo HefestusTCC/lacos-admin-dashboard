@@ -19,7 +19,7 @@ form.addEventListener('submit', e => {
             return res.json();
         }
     }).then(data => {
-        sessionStorage.setItem("token", data.accessToken);
+        sessionStorage.setItem("jwt", data.accessToken);
         sessionStorage.setItem("expiration", data.expiresIn);
         sessionStorage.setItem("user", JSON.stringify(data.user));
         window.location.href = "dashboard.html";
