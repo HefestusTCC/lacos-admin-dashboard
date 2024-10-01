@@ -1,3 +1,21 @@
+import apiFetch from './api.js'; 
+try {
+  const response = await apiFetch('/report/likes/last-24-hours');
+  const data = await response.json();
+  console.log(data)
+  document.getElementById('total_curtidas').innerText = data.data;
+} catch (error) {
+  console.error('Erro ao buscar total de curtidas:', error);
+}
+
+try {
+  const response = await apiFetch('/report/comments/last-24-hours');
+  const data = await response.json();
+  console.log(data)
+  document.getElementById('total_comentario').innerText = data.data;
+} catch (error) {
+  console.error('Erro ao buscar total de comentários:', error);
+}
 const data = {
     totalInteracao: 300,
     totalPercentage: 100,
@@ -10,7 +28,7 @@ const data = {
 
 // Função para atualizar os valores na página
 function updateDashboard(data) {
-    document.getElementById('total_interacao').innerText = data.totalInteracao;
+    document.getElementById('total_interacao').innerText = (('total_comentario').innerText)+(('total_curtidas').innerText);
     
     document.getElementById('total_percentage').innerText = data.totalPercentage;
     document.getElementById('total_percentage').innerText = data.totalPercentage.toFixed(1) + '%';

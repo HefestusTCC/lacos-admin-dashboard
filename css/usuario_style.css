@@ -634,3 +634,41 @@ main .parceria-container {
    #execute-search:hover {
 background-color:var(--color-primary);
    }
+
+
+   #cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+.card {
+    background-color: #FF6E15;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+    position: relative;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.card-description {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+/* Estilo do botão e dropdown */
+.parceria-buttons {
+    margin-top: 15px;
+}
