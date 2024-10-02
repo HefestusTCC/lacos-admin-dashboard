@@ -1,53 +1,31 @@
-import apiFetch from './api.js'; 
-try {
-  const response = await apiFetch('/report/likes/last-24-hours');
-  const data = await response.json();
-  console.log(data)
-  document.getElementById('total_curtidas').innerText = data.data;
-} catch (error) {
-  console.error('Erro ao buscar total de curtidas:', error);
+import apiFetch from './api.js';
+
+async function getCountOfLastComments() {
+  try {
+    const response = await apiFetch('/report/comments/last-24-hours');
+    const data = await response.json();
+    return data.data;
+  } catch (error) {
+    console.error('Erro ao buscar total de comentários:', error);
+  }
 }
 
-try {
-  const response = await apiFetch('/report/comments/last-24-hours');
-  const data = await response.json();
-  console.log(data)
-  document.getElementById('total_comentario').innerText = data.data;
-} catch (error) {
-  console.error('Erro ao buscar total de comentários:', error);
-}
-const data = {
-    totalInteracao: 300,
-    totalPercentage: 100,
-    totalCurtidas: 45,
-    curtidasPercentage: 50,
-    totalComentario : 5,
-    comentarioPercentage: 10
-
-};
-
-// Função para atualizar os valores na página
-function updateDashboard(data) {
-    document.getElementById('total_interacao').innerText = (('total_comentario').innerText)+(('total_curtidas').innerText);
-    
-    document.getElementById('total_percentage').innerText = data.totalPercentage;
-    document.getElementById('total_percentage').innerText = data.totalPercentage.toFixed(1) + '%';
-
-    document.getElementById('total_curtidas').innerText = data.totalCurtidas;
-    document.getElementById('curtidas_percentage').innerText = data.curtidasPercentage;
-    document.getElementById('curtidas_percentage').innerText = data.curtidasPercentage + '%';
-
-    document.getElementById('total_comentario').innerText = data.totalComentario;
-    document.getElementById('comentario_percentage').innerText = data.comentarioPercentage;
-    document.getElementById('comentario_percentage').innerText = data.comentarioPercentage + '%';
-   
+async function getCountOfLastLikes() {
+  try {
+    const response = await apiFetch('/report/likes/last-24-hours');
+    const data = await response.json();
+    return data.data;
+  } catch (error) {
+    console.error('Erro ao buscar total de curtidas:', error);
+  }
 }
 
-updateDashboard(data);
+let curtidas = await getCountOfLastComments();
+console.log(curtidas);
 
+let comentarios = await getCountOfLastLikes();
+console.log(comentarios);
 
-
-
-
-
-
+document.getElementById('total_curtidas').innerHTML = await curtidas;
+document.getElementById('total_comentario').innerHTML = await comentarios;
+document.getElementById('total_interacao').innerHTML = parseInt(await curtidas) + parseInt(await comentarios);

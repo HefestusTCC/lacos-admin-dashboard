@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/moderacao_style.css">
     <link rel="stylesheet" href="css/usuario_style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 
@@ -61,45 +61,52 @@
             </div>
         </aside>
         <!--end aside-->
-    <main>
-  <h1>Admin</h1>
+        <main>
+            <h1>Admin</h1>
 
-  <div class="search-container">
-    <div class="input-wrapper">
-      
-      <button id="search-btn">
-      <i style="font-size: 17px;padding-right: 10px;">Buscar Admin</i>  
-        <i class="fa fa-search"></i>
-      </button>
-    </div>
+            <div class="search-container">
+                <div class="input-wrapper">
 
-    <!-- Inputs ocultos para ID, Nome e Username -->
-    <div class="filters hidden" id="filters">
-      <input type="text" placeholder="ID" id="search-id" />
-      <input type="text" placeholder="Nome" id="search-name" />
-      <input type="text" placeholder="Username" id="search-username" />
-      <button id="execute-search">Pesquisar</button>
-    </div>
-  </div>
-       <div class="parceria-container">
-    <div class="parceria-info">
-        <img src="https://designimages.appypie.com/profilepicture/profilepicture-1-head-person.jpg"
-            alt="Imagem da Parceria" class="parceria-image">
-        <div class="parceria-details">
-            <h2>Luís</h2>
-            <small class="text-muted">luis17</small>
-        </div>
-    </div>
-    <div class="parceria-buttons">
-        <button type="button" class="parceria_type dropdown-btn">Opções</button>
-        <div class="dropdown-content">
-            <a href="#">Virar usuário comum</a>
-            <a href="#">Apagar Admin</a>
+                    <button id="search-btn">
+                        <i style="font-size: 17px;padding-right: 10px;">Buscar Admin</i>
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
 
-            
-        </div>
-    </div>
-</div>
+                <!-- Inputs ocultos para ID, Nome e Username -->
+                <div class="filters hidden" id="filters">
+                    <form id="searchForm" class="filters">
+                        <input type="text" placeholder="ID" id="search-id" />
+                        <input type="text" placeholder="Nome" id="search-name" />
+                        <input type="text" placeholder="Username" id="search-username" />
+                        <button id="execute-search">Pesquisar</button>
+                    </form>
+                </div>
+            </div>
+            <div id="listaUsuarios">
+                <div class="parceria-container" style="display: none;">
+                    <div class="parceria-info">
+                        <img src="imgUser" alt="Imagem da Parceria" class="parceria-image">
+                        <div class="parceria-details">
+                            <h2>Nome</h2>
+                            <small class="text-muted">Username</small>
+                        </div>
+                    </div>
+                    <div class="parceria-buttons">
+                        <button type="button" class="parceria_type dropdown-btn">Opções</button>
+                        <div class="dropdown-content">
+                            <button style="width: 100%;" type="button" id="promoteButton"><a href="#">Tornar
+                                    Admin</a></button>
+                            <button style="width: 100%;" type="button" id="demoteButton"><a href="#">Desbanir
+                                    Usuário</a></button>
+                            <button style="width: 100%;" type="button" id="deleteUser"><a href="#">Apagar
+                                    Usuário</a></button>
+                            <button style="width: 100%;" type="button" id="banUser"><a href="#">Banir
+                                    Usuário</a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </main>
         <!--end main-->
@@ -129,6 +136,7 @@
     <script type="text/javascript" src="./js/card_dashboad.js"></script>
     <script type="text/javascript" src="./js/dashboard.js"></script>
     <script type="module" src="./js/userData.js"></script>
+    <script type="module" src="./js/moderacaoAdmin.js"></script>
 </body>
 
 </html>

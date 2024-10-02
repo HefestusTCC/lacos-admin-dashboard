@@ -312,6 +312,7 @@ main .parceria-container {
     border-radius: var(--border-radius-1);
     cursor: pointer;
     transition: background-color 0.3s ease;
+    
 }
 
 
@@ -528,34 +529,41 @@ main .parceria-container {
 }
 
 /* Ajustes para o dropdown */
+/* Estilo do contêiner da lista */
+.lista-usuarios {
+    position: relative; /* Permite que os filhos usem z-index em relação a ele */
+}
+
+/* Estilo do dropdown */
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: var(--color-white);
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1;
+    z-index: 1000; /* Aumente para garantir que esteja no topo */
     border-radius: var(--border-radius-1);
     padding: 0.5rem 0;
     margin-top: 0.5rem;
     right: 0;
     width: 200px;
-    /* Novo ajuste */
     max-height: 200px;
-    /* Aumente a altura máxima */
     overflow-y: auto;
-    /* Adicione rolagem se o conteúdo for muito alto */
 }
 
+/* Estilo dos links no dropdown */
 .dropdown-content a {
     padding: 0.5rem 1rem;
     text-decoration: none;
     display: block;
+    z-index: 999; /* Mantenha menor que o dropdown */
     color: var(--color-dark);
 }
 
+/* Estilo no hover dos links */
 .dropdown-content a:hover {
     background-color: #ffb36b;
 }
+
 
 .show {
     display: block;
