@@ -104,7 +104,8 @@ small {
 
 /*legenda card*/
 .text-muted {
-    color: var(--color-info-dark);
+    font-size: 13px;
+    color: #181a1e;
 }
 
 p {
@@ -282,11 +283,12 @@ main .parceria-container {
 .parceria-info {
     display: flex;
     align-items: center;
-    gap: 1.4rem;
-
+    justify-content: center;
+    flex-direction: column;
 }
 
 .parceria-image {
+    
     width: 3.5rem;
     height: 3.5rem;
     border-radius: 100%;
@@ -294,6 +296,7 @@ main .parceria-container {
     max-width: 3.5rem;
     max-height: 3.5rem;
 }
+
 
 .parceria-details h2 {
     font-size: 1rem;
@@ -573,7 +576,6 @@ main .parceria-container {
   .search-container {
       margin-top: 1rem;
       padding: 1rem;
-
       border-radius: var(--border-radius-2);
 
   }
@@ -676,7 +678,56 @@ background-color:var(--color-primary);
     margin-top: 10px;
 }
 
-/* Estilo do botão e dropdown */
-.parceria-buttons {
-    margin-top: 15px;
+table {
+    text-align: center;
+    width: 100%;
+    border-collapse: collapse;
+    
+    font-family: Arial, sans-serif;
+    align-items: center;
+    border-radius: 10%;
+
 }
+
+tr{
+    align-items: center;
+    text-align: left;
+ 
+    border-radius:10px;
+
+}
+
+td {
+
+    align-items: center;
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    align-items: center;
+        
+        padding: 8px;
+        text-align: center;
+    
+    
+    text-align: left;
+    align-items: left;
+    
+    font-weight: bold;
+    font-size: 15px;
+}
+
+
+button{
+    padding: 5px 10px;
+    border: none;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    font-size: 13px;
+    background-color: #f6f6f9;
+}
+
+
+

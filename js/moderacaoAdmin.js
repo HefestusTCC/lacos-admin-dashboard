@@ -7,27 +7,45 @@ window.onload = function () {
 
 async function loadUsers() {
     $('#listaUsuarios').empty();
-    let response = await getUsers('/admin/all');
-    console.log(response);
+
+const header = `
+    <table>
+        <tr style="background-color:#ff7a28b0;">
+            <th style="width: 10%; border-radius:10px 0% 0% 10px;"></th>
+            <th style="width: 20%;">Nome</th>
+            <th style="width: 15%;">Usuário</th>
+            <th style="width: 25%;">Email</th>
+            <th style="width: 10%;">Nível</th>
+            <th style="width: 10%;">Status</th>
+            <th style="width: 10%; border-radius:0px 10px 10px 0px;"></th>
+        </tr>
+    </table>
+`;
+    
+// Insere o cabeçalho no HTML
+$("#listaUsuarios").append(header);
+
+let response = await getUsers('/admin/all');
+console.log(response);
+
     if (response.length > 0) {
         response.forEach(function (user) {
+                let viewRole = "";
+                user.roles.forEach((role) => {
+                  viewRole = viewRole + role.role + " ";
+                });
             const card = `
-                                <div class="parceria-container">
-                                    <div class="parceria-info">
-                                        <img src="${user.profilePictureURL}" alt="Imagem do Usuário" class="parceria-image">
-                                        <div class="parceria-details">
-                                            <h2>${user.name}</h2>
-                                            <small class="text-muted">${user.username}</small>
-                                        </div>
-                                    </div>
-                                    <div class="parceria-buttons">
-                                        <button type="button" class="parceria_type dropdown-btn">Opções</button>
-                                        <div class="dropdown-content">
-                                            
-                                            <button style="width: 100%; z-index: 99;" type="button" class="demoteButton" data-id="${user.id}"><a style="width: 100%; z-index: 99;">Remover Admin</a></button>
-                                        </div>
-                                    </div>
-                                </div>
+                        <tr>
+                            <td style="width: 10%; border-radius:10px 0% 0% 10px;"><img src="${user.profilePictureURL}" alt="Imagem do Usuário" class="parceria-image"></td>
+                            <td style="width: 20%;"><small class="text-muted">${user.name}</small></td>
+                            <td style="width: 15%;"><small class="text-muted">${user.username}</small></td>
+                            <td style="width: 25%;"><small class="text-muted">${user.email}</small></td>
+                            <td style="width: 10%;"><small class="text-muted">${viewRole}</small></td>
+                            <td style="width: 10%;"><small class="text-muted">${user.status}</small></td>
+                            <td>
+                                <button style="width: 100%; border-radius: 0px 10px 10px 0px; z-index: 99;" type="button" class="demoteButton" data-id="${user.id}"><a style="width: 100%; z-index: 99;">Remover Admin</a></button>
+                            </td>
+                        </tr>
                             `;
             $('#listaUsuarios').append(card);
 
@@ -42,7 +60,7 @@ $('#searchForm').on('submit', async function (event) {
     const username = $('#search-username').val();
     const id = $('#search-id').val();
     
-    if (!name && !username && !id) {
+    if (!name && !username && !id){
         loadUsers();
         return;
     }
@@ -56,29 +74,26 @@ $('#searchForm').on('submit', async function (event) {
     if (response.length > 0) {
         response.forEach(function (user) {
             const card = `
-                                <div class="parceria-container">
-                                    <div class="parceria-info">
-                                        <img src="${user.profilePictureURL}" alt="Imagem do Usuário" class="parceria-image">
-                                        <div class="parceria-details">
-                                            <h2>${user.name}</h2>
-                                            <small class="text-muted">${user.username}</small>
-                                        </div>
-                                    </div>
-                                    <div class="parceria-buttons">
-                                        <button type="button" class="parceria_type dropdown-btn">Opções</button>
-                                        <div class="dropdown-content">
-                                            <button style="width: 100%; z-index: 99;" type="button" class="demoteButton" data-id="${user.id}"><a style="width: 100%; z-index: 99;">Remover Admin</a></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                </div>
+                        <tr>
+                            <td style="width: 10%;"><img src="${user.profilePictureURL}" alt="Imagem do Usuário" class="parceria-image"></td>
+                            <td style="width: 20%;"><small class="text-muted">${user.name}</small></td>
+                            <td style="width: 15%;"><small class="text-muted">${user.username}</small></td>
+                            <td style="width: 25%;"><small class="text-muted">${user.email}</small></td>
+                            <td style="width: 10%;"><small class="text-muted">${user.level}</small></td>
+                            <td style="width: 10%;"><small class="text-muted">${user.status}</small></td>
+                            <td>
+                                <button style="width: 100%; z-index: 99;" type="button" class="demoteButton" data-id="${user.id}"><a style="width: 100%; z-index: 99;">Remover Admin</a></button>
+                            </td>
+                        </tr> 
                             `;
             $('#listaUsuarios').append(card);
         });
         assignButtonEvents();
+
         $(".dropdown-btn").on("click", function () {
             $(this).next(".dropdown-content").toggleClass("show");
         });
+
     } else {
         $('#listaUsuarios').html('<p>Nenhum usuário encontrado.</p>');
     }

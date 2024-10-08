@@ -31,25 +31,22 @@
                     <h3>Dashboard</h3>
                 </a>
                 <a href="admin.html" class="active">
-                    <span class="material-symbols-sharp">man</span>
+                    <span class="material-symbols-sharp">add_moderator</span>
                     <h3>Admin</h3>
                 </a>
                 <a href="usuario.html">
                     <span class="material-symbols-sharp">person</span>
-                    <h3>Usuário</h3>
+                    <h3>Usuários</h3>
                 </a>
                 <a href="users.html">
                     <span class="material-symbols-sharp">group</span>
-                    <h3>Usuários</h3>
+                    <h3>Total Usuários</h3>
                 </a>
                 <a href="engajamento.html">
                     <span class="material-symbols-sharp">query_stats</span>
                     <h3>Engajamento</h3>
                 </a>
-                <a href="moderacao.html">
-                    <span class="material-symbols-sharp">add_moderator</span>
-                    <h3>Moderação</h3>
-                </a>
+               
                 <a href="parcerias.html">
                     <span class="material-symbols-sharp">storefront</span>
                     <h3>Anunciantes</h3>
@@ -63,17 +60,13 @@
         <!--end aside-->
         <main>
             <h1>Admin</h1>
-
             <div class="search-container">
                 <div class="input-wrapper">
-
                     <button id="search-btn">
                         <i style="font-size: 17px;padding-right: 10px;">Buscar Admin</i>
                         <i class="fa fa-search"></i>
                     </button>
                 </div>
-
-                <!-- Inputs ocultos para ID, Nome e Username -->
                 <div class="filters hidden" id="filters">
                     <form id="searchForm" class="filters">
                         <input type="text" placeholder="ID" id="search-id" />
@@ -83,7 +76,7 @@
                     </form>
                 </div>
             </div>
-            <div id="listaUsuarios">
+                     <div id="listaUsuarios">
                 <div class="parceria-container" style="display: none;">
                     <div class="parceria-info">
                         <img src="imgUser" alt="Imagem da Parceria" class="parceria-image">
@@ -107,7 +100,6 @@
                     </div>
                 </div>
             </div>
-
         </main>
         <!--end main-->
         <div class="right">
