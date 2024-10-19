@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denuncias</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" />
+    <link rel="stylesheet" href="css/parceria_style.css">
+    <link rel="stylesheet" href="css/respDenuncias.css">
+   
+</head>
+
+<body>
+    <div class="container">
+        <aside>
+            <div class="top">
+                <div class="logo">
+                    <img src="./img/logo.png" alt="Logo">
+                </div>
+                <div class="close" id="close_btn">
+                    <span class="material-symbols-sharp">close</span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <a href="dashboard.html">
+                    <span class="material-symbols-sharp">grid_view</span>
+                    <h3>Dashboard</h3>
+                </a>
+                <a href="admin.html">
+                    <span class="material-symbols-sharp">add_moderator</span>
+                    <h3>Admin</h3>
+                </a>
+                <a href="usuario.html">
+                    <span class="material-symbols-sharp">person</span>
+                    <h3>Usuários</h3>
+                </a>
+                <a href="users.html">
+                    <span class="material-symbols-sharp">group</span>
+                    <h3>Total Usuários</h3>
+                </a>
+                <a href="denuncias.html" class="active">
+                    <span class="material-symbols-sharp">face</span>
+                    <h3>Denuncias</h3>
+                </a>
+                <a href="engajamento.html">
+                    <span class="material-symbols-sharp">query_stats</span>
+                    <h3>Engajamento</h3>
+                </a>
+                <a href="parcerias.html">
+                    <span class="material-symbols-sharp">storefront</span>
+                    <h3>Anunciantes</h3>
+                </a>
+                <a href="/">
+                    <span class="material-symbols-sharp">logout</span>
+                    <h3>Sair</h3>
+                </a>
+            </div>
+        </aside>
+        <!--end aside-->
+        <main>
+            <h1>Denúncias</h1>
+            <div class="date">
+                <input type="date">
+            </div>
+
+            <div class="barraOpcoes">
+                <button type="button" onclick="mostrarFormularioResposta()">Responder</button>
+                <button type="button">Excluir</button>
+                <button type="button" onclick="abrirPaginaDenuncia()">Voltar</button>
+            </div>
+
+            <div id="divDenuncias" class="div-denuncias">
+                <div class="denuncia">
+                    <div class="fotoUsuario">
+                        <img src="" alt="Foto do Usuário">
+                    </div>
+                    <div class="conteudoDenuncia">
+                        <div class="tituloDenuncia">
+                            <p>Titulo Denuncia</p>
+                            <div class="numeroDenuncia">
+                                <p>#numero da denuncia</p>
+                            </div>
+                            <div class="statusResposta">
+                                <p>Respondida ou pendente</p>
+                            </div>
+                        </div>
+                        <div class="nomeUserDenuncia">
+                            <p>Nome da pessoa que fez a denuncia</p>
+                        </div>
+                        <div class="corpoDenuncia">
+                            <p>Denuncia Detalhada</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formulário de resposta -->
+            <div id="formularioResposta">
+                <h2>Responder Denúncia</h2>
+                <form id="respostaEmailForm">
+                    
+                    <label for="assunto">Assunto:</label>
+                    <br>
+                    <input type="text" id="assunto" name="assunto" required><br><br>
+
+                    <label for="mensagem">Mensagem:</label><br>
+                    <textarea id="mensagem" name="mensagem" rows="4" required></textarea><br><br>
+
+                    <button type="button" class="btnEnviar" onclick="enviarResposta()">Enviar</button>
+                </form>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        function abrirPaginaDenuncia() {
+            window.location.href = "denuncias.html";
+        }
+
+        // Função para mostrar o formulário de resposta
+        function mostrarFormularioResposta() {
+            const formulario = document.getElementById("formularioResposta");
+            formulario.style.display = "block";  // Torna o formulário visível
+        }
+
+        function enviarResposta() {
+
+            const assunto = document.getElementById("assunto").value;
+            const mensagem = document.getElementById("mensagem").value;
+
+         
+            const dataResposta = new Date();
+            const dataFormatada = dataResposta.toLocaleDateString();
+            const horaFormatada = dataResposta.toLocaleTimeString();
+
+            if (assunto && mensagem) {
+           
+                const respostaEnviada = document.createElement("div");
+                respostaEnviada.classList.add("resposta-enviada");
+                respostaEnviada.innerHTML = `
+                    <h3>Resposta Enviada</h3>
+                    <p><strong>Assunto:</strong> ${assunto}</p>
+                    <p><strong>Mensagem:</strong> ${mensagem}</p>
+                    <p><strong>Data de envio:</strong> ${dataFormatada} às ${horaFormatada}</p>
+                `;
+
+                // Insere a resposta enviada abaixo da div de denúncias
+                const divDenuncias = document.getElementById("divDenuncias");
+                divDenuncias.appendChild(respostaEnviada);
+
+                // Limpa o formulário
+                document.getElementById("respostaEmailForm").reset();
+
+                // Oculta o formulário
+                document.getElementById("formularioResposta").style.display = "none";
+            } else {
+                alert("Preencha todos os campos!");
+            }
+        }
+    </script>
+</body>
+
+</html>

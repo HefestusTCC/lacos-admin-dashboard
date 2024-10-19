@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denuncias</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" />
+    <link rel="stylesheet" href="css/parceria_style.css">
+    <link rel="stylesheet" href="css/denuncias.css">
+</head>
+
+<body>
+    <div class="container">
+        <aside>
+            <div class="top">
+                <div class="logo">
+                    <img src="./img/logo.png" alt="Logo">
+                </div>
+                <div class="close" id="close_btn">
+                    <span class="material-symbols-sharp">close</span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <a href="dashboard.html">
+                    <span class="material-symbols-sharp">grid_view</span>
+                    <h3>Dashboard</h3>
+                </a>
+                <a href="admin.html">
+                    <span class="material-symbols-sharp">add_moderator</span>
+                    <h3>Admin</h3>
+                </a>
+                <a href="usuario.html">
+                    <span class="material-symbols-sharp">person</span>
+                    <h3>Usuários</h3>
+                </a>
+                <a href="users.html">
+                    <span class="material-symbols-sharp">group</span>
+                    <h3>Total Usuários</h3>
+                </a>
+                <a href="denuncias.html" class="active">
+                    <span class="material-symbols-sharp">face</span>
+                    <h3>Denuncias</h3>
+                </a>
+                <a href="engajamento.html">
+                    <span class="material-symbols-sharp">query_stats</span>
+                    <h3>Engajamento</h3>
+                </a>
+                <a href="parcerias.html">
+                    <span class="material-symbols-sharp">storefront</span>
+                    <h3>Anunciantes</h3>
+                </a>
+                <a href="/">
+                    <span class="material-symbols-sharp">logout</span>
+                    <h3>Sair</h3>
+                </a>
+            </div>
+        </aside>
+        <!--end aside-->
+        <main>
+            <h1>Denuncias</h1>
+            <div class="date">
+                <input type="date">
+            </div>
+            <div class="div-denuncias">
+                    <div class="denuncia" onclick="abrirPaginaDenuncia()">
+                        <div class="fotoUsuario">
+                            <img src="" alt="Foto do Usuário">
+                        </div>
+                        <div class="conteudoDenuncia">
+                            <div class="tituloDenuncia">
+                                <p>Titulo Denuncia</p>
+                                <div class="numeroDenuncia">
+                                    <p>#numero da denuncia</p>
+                                </div>
+                            </div>
+                            <div class="nomeUserDenuncia">
+                                <p>Nome da pessoa que fez a denuncia</p>
+                            </div>
+                            <div class="statusResposta">
+                                <p>Se foi respondida ou nao</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="div-denuncias">
+                    <div class="denuncia" onclick="abrirPaginaDenuncia()">
+                        <div class="fotoUsuario">
+                            <img src="" alt="Foto do Usuário">
+                        </div>
+                        <div class="conteudoDenuncia">
+                            <div class="tituloDenuncia">
+                                <p>Titulo Denuncia</p>
+                                <div class="numeroDenuncia">
+                                    <p>#numero da denuncia</p>
+                                </div>
+                            </div>
+                            <div class="nomeUserDenuncia">
+                                <p>Nome da pessoa que fez a denuncia</p>
+                            </div>
+                            <div class="statusResposta">
+                                <p>Se foi respondida ou nao</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </main>
+           <div class="right">
+            <div class="top">
+                <button id="menu_btn">
+                    <span class="material-symbols-sharp"> menu</span>
+                </button>
+                <div class="theme-toggler">
+                    <span class="material-symbols-sharp active">light_mode</span>
+                    <span class="material-symbols-sharp">dark_mode</span>
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        <p>Olá, <b id="adminName"></b></p>
+                        <small class="text-muted">Admin</small>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="" id="profilePicture" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+
+    <script>
+        function abrirPaginaDenuncia() {
+            
+            window.location.href = "responderDenuncia.html";
+        }
+    </script>
+        <script type="module" src="./js/grafico.js"></script>
+    <script type="module" src="./js/card_dashboad.js"></script>
+    <script type="module" src="./js/dashboard.js"></script>
+    <script type="module" src="./js/userData.js"></script>
+</body>
+
+</html>

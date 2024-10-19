@@ -1,0 +1,81 @@
+  .div-denuncias {
+      width: 100%;
+      height: auto;
+      padding: 10px;
+  }
+
+  .denuncia {
+      cursor: pointer;
+      display: flex;
+      margin-bottom: 10px;
+      margin-top: 10px;
+      height: 100px;
+      border-radius: 10px;
+      width: 100%;
+      align-items: center;
+      padding: 10px;
+      box-sizing: border-box;
+      background-color: #d9d9d9;
+  }
+
+  .fotoUsuario img {
+      width: 60px;
+      height: 60px;
+      border-radius: 100%;
+      object-fit: cover;
+      margin-right: 10px;
+  }
+
+  .conteudoDenuncia {
+      flex: 1;
+  }
+
+  .tituloDenuncia {
+      display: flex;
+      font-size: 15px;
+      padding: 5px;
+  }
+
+  .numeroDenuncia {
+      margin-left: 20px;
+  }
+
+  .nomeUserDenuncia {
+      padding: 5px;
+      font-size: 12px;
+  }
+
+  .statusResposta {
+      padding: 5px;
+      color: rgb(0, 0, 0);
+      font-size: 12px;
+  }
+
+  /* Painel deslizante */
+  .painel {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      right: 0;
+      background-color: white;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+      box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  }
+
+  .conteudo-painel {
+      padding: 20px;
+      background-color: #f1f1f1;
+  }
+
+  .fechar {
+      position: absolute;
+      top: 10px;
+      right: 25px;
+      font-size: 36px;
+      cursor: pointer;
+  }
+
+  

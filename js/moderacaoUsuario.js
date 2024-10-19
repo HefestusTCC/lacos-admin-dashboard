@@ -2,13 +2,13 @@ import apiFetch from './api.js';
 import genericFetch from './genericApi.js'
 
 window.onload = function () {
-    loadUsers();
+  loadUsers();
 };
 
 async function loadUsers() {
-    $('#listaUsuarios').empty();
+  $('#listaUsuarios').empty();
 
-const header = `
+  const header = `
     <table>
         <tr style="background-color:#ff7a28b0;">
             <th style="width: 7%; border-radius:10px 0px 0px 10px; text-align:left;"></th>
@@ -23,17 +23,17 @@ const header = `
     </table>
 `;
 
-// Insere o cabeçalho no HTML
-$("#listaUsuarios").append(header);
+  // Insere o cabeçalho no HTML
+  $("#listaUsuarios").append(header);
 
-let response = await getUsers('/report/users/all');
-if (response.length > 0) {
-  response.forEach(function (user) {
-    let viewRole = "";
-    user.roles.forEach((role) => {
-      viewRole = viewRole + role.role + " ";
-    });
-    const card = `
+  let response = await getUsers('/report/users/all');
+  if (response.length > 0) {
+    response.forEach(function (user) {
+      let viewRole = "";
+      user.roles.forEach((role) => {
+        viewRole = viewRole + role.role + "<br>";
+      });
+      const card = `
                    <tr>
                             <td style="width: 5%;"><img src="${user.profilePictureURL}" alt="Imagem do Usuário" class="parceria-image"></td>
                             <td style="width: 20%;"><small class="text-muted">${user.name}</small></td>
@@ -51,38 +51,38 @@ if (response.length > 0) {
      
 
                             `;
-    $("#listaUsuarios").append(card);
+      $("#listaUsuarios").append(card);
 
-    assignButtonEvents();
-  });
-}
+      assignButtonEvents();
+    });
+  }
 }
 
 $('#searchForm').on('submit', async function (event) {
-    event.preventDefault();
-    const name = $('#search-name').val();
-    const username = $('#search-username').val();
-    const id = $('#search-id').val();
+  event.preventDefault();
+  const name = $('#search-name').val();
+  const username = $('#search-username').val();
+  const id = $('#search-id').val();
 
-    if (!name && !username && !id){
-        loadUsers();
-        return;
-    }
-    let url = `/admin/users/search?`;
-    if (name) url += `name=${encodeURIComponent(name)}&`;
-    if (username) url += `username=${encodeURIComponent(username)}&`;
-    if (id) url += `id=${encodeURIComponent(id)}&`;
-    let response = await getUsers(url);
-    $('#listaUsuarios').empty();
+  if (!name && !username && !id) {
+    loadUsers();
+    return;
+  }
+  let url = `/admin/users/search?`;
+  if (name) url += `name=${encodeURIComponent(name)}&`;
+  if (username) url += `username=${encodeURIComponent(username)}&`;
+  if (id) url += `id=${encodeURIComponent(id)}&`;
+  let response = await getUsers(url);
+  $('#listaUsuarios').empty();
 
-const header = `
+  const header = `
     <table>
         <tr style="background-color:#ff7a28b0;">
             <th style="width: 7%; border-radius:10px 0px 0px 10px; text-align:left;"></th>
-            <th style="width: 14%;">Nome</th>
+            <th style="width: 10%;">Nome</th>
             <th style="width: 13%;">Usuário</th>
-            <th style="width: 20%;">Email</th>
-            <th style="width: 8%;">Nível</th>
+            <th style="width: 21%;">Email</th>
+            <th style="width: 7%;">Nível</th>
             <th style="width: 8%;">Status</th>
             <th style="width: 40%; border-radius:0px 10px 10px 0px;"></th>
         
@@ -91,16 +91,17 @@ const header = `
 `;
 
 
-$("#listaUsuarios").append(header);
+  $("#listaUsuarios").append(header);
 
 
-    if (response.length > 0) {
-        response.forEach(function (user) {
-            let viewRole = "";
-            user.roles.forEach((role) => {
-            viewRole = viewRole + role.description + " ";
-        });
-            const card = `
+  if (response.length > 0) {
+    response.forEach(function (user) {
+      console.log(user)
+      let viewRole = "";
+      user.roles.forEach((role) => {
+        viewRole = viewRole + role.role + "<br>";
+      });
+      const card = `
              <tr>
                             <td style="width: 5%;"><img src="${user.profilePictureURL}" alt="Imagem do Usuário" class="parceria-image"></td>
                             <td style="width: 20%;"><small class="text-muted">${user.name}</small></td>
@@ -116,21 +117,21 @@ $("#listaUsuarios").append(header);
                             
                         </tr>
                             `;
-            $('#listaUsuarios').append(card);
-        });
-        assignButtonEvents();
-        $(".dropdown-btn").on("click", function() {
-            $(this).next(".dropdown-content").toggleClass("show");
-        });
-    } else {
-        $('#listaUsuarios').html('<p>Nenhum usuário encontrado.</p>');
-    }
+      $('#listaUsuarios').append(card);
+    });
+    assignButtonEvents();
+    $(".dropdown-btn").on("click", function () {
+      $(this).next(".dropdown-content").toggleClass("show");
+    });
+  } else {
+    $('#listaUsuarios').html('<p>Nenhum usuário encontrado.</p>');
+  }
 })
 
 function assignButtonEvents() {
   $(".banUser").on("click", async function () {
     const userId = $(this).data("id");
-    let data = await genericFetch(`/admin/users/${userId}/ban`);
+    let data = await buttonActions(`/admin/users/${userId}/ban`);
     if (data.status == 200) {
       location.reload();
     }
