@@ -75,7 +75,6 @@
                     <small class="text-muted">Últimas 24 horas</small>
                 </div>
                 
-                <!-- Novos Usuários -->
                 <div class="new_users">
                     <span class="material-symbols-sharp">person_add</span>
                     <div class="middle">
@@ -87,10 +86,35 @@
                     </div>
                     <small class="text-muted">Últimas 24 horas</small>
                 </div>
+
+                <div class="active-users">
+                    <span class="material-symbols-sharp">person</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Usuários Ativos</h3>
+                            <h1 id="active-users">0</h1>
+                        </div>
+                        
+                    </div>
+                    <small class="text-muted">Últimas 24 horas</small>
+                </div>
+
+                 <div class="ban-users">
+                    <span class="material-symbols-sharp">block</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Usuários Banidos</h3>
+                            <h1 id="ban-users">0</h1>
+                        </div>
+                        
+                    </div>
+                    <small class="text-muted">Últimas 24 horas</small>
+                </div>
                 
                 <!-- Postagens Recentes -->
            
             </div> 
+
             <div class="posts">
                 <h2>Quantidade de Usuários Trimestral</h2>
                 <div id="chart_div"></div>          
@@ -102,10 +126,7 @@
                 <button id="menu_btn">
                     <span class="material-symbols-sharp"> menu</span>
                 </button>
-                <div class="theme-toggler">
-                    <span class="material-symbols-sharp active">light_mode</span>
-                    <span class="material-symbols-sharp">dark_mode</span>
-                </div>
+                
                 <div class="profile">
                     <div class="info">
                         <p>Olá, <b id="adminName"></b></p>

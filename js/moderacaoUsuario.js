@@ -10,13 +10,13 @@ async function loadUsers() {
 
   const header = `
     <table>
-        <tr style="background-color:#ff7a28b0;">
-            <th style="width: 7%; border-radius:10px 0px 0px 10px; text-align:left;"></th>
-            <th style="width: 10%;">Nome</th>
-            <th style="width: 13%;">Usuário</th>
-            <th style="width: 21%;">Email</th>
-            <th style="width: 7%;">Nível</th>
-            <th style="width: 8%;">Status</th>
+        <tr style=" background-color:#ff7a28b0;">
+            <th style="width: 6%; border-radius:10px 0px 0px 10px;"></th>
+            <th style="width: 12%; text-align: center; vertical-align: middle;">Nome</th>
+            <th style="width: 12%; text-align: center; vertical-align: middle;">Usuário</th>
+            <th style="width: 20%; text-align: center; vertical-align: middle;">Email</th>
+            <th style="width: 15%; text-align: center; vertical-align: middle;">Nível</th>
+            <th style="width: 3%; text-align: center; vertical-align: middle;">Status</th>
             <th style="width: 40%; border-radius:0px 10px 10px 0px;"></th>
         
         </tr>
@@ -35,7 +35,7 @@ async function loadUsers() {
       });
       const card = `
                    <tr>
-                            <td style="width: 5%;"><img src="${user.profilePictureURL}" alt="Imagem do Usuário" class="parceria-image"></td>
+                            <td style="width: 10%; text-align:center; border-radius: 10px 0px 0px 0px;"><img src="${user.profilePictureURL}" alt="Imagem do Usuário" class="parceria-image" style="display: block; margin: 0 auto;"></td>
                             <td style="width: 20%;"><small class="text-muted">${user.name}</small></td>
                             <td style="width: 15%;"><small class="text-muted">${user.username}</small></td>
                             <td style="width: 25%;"><small class="text-muted">${user.email}</small></td>
@@ -44,7 +44,7 @@ async function loadUsers() {
                             <td><button style="width: 100%; z-index: 99;" type="button" class="promoteButton" data-id="${user.id}"><a style="width: 100%; z-index: 99;">Tornar Admin</a></button></td>
                             <td><button style="width: 100%; z-index: 99;" type="button" class="demoteButton" data-id="${user.id}"><a style="width: 100%; z-index: 99;">Desbanir Usuário</a></button></td>
                             <td><button style="width: 100%; z-index: 99;" type="button" class="deleteUser" data-id="${user.id}"><a style="width: 100%; z-index: 99;">Apagar Usuário</a></button></td>
-                            <td><button style="width: 100%; z-index: 99;" type="button" class="banUser" data-id="${user.id}"><a style="width: 100%; z-index: 99;">Banir Usuário</a></button></td>
+                            <td style="border-radius: 0px 0px 10px 0px";><button style="width: 100%; z-index: 99;" type="button" class="banUser" data-id="${user.id}"><a style="width: 100%; z-index: 99;">Banir Usuário</a></button></td>
                             
                         </tr>    
     
@@ -78,8 +78,8 @@ $('#searchForm').on('submit', async function (event) {
   const header = `
     <table>
         <tr style="background-color:#ff7a28b0;">
-            <th style="width: 7%; border-radius:10px 0px 0px 10px; text-align:left;"></th>
-            <th style="width: 10%;">Nome</th>
+            <th style="width: 6%; border-radius:10px 0px 0px 10px; text-align:left;"></th>
+            <th style="width: 20%;">Nome</th>
             <th style="width: 13%;">Usuário</th>
             <th style="width: 21%;">Email</th>
             <th style="width: 7%;">Nível</th>
@@ -184,4 +184,13 @@ async function buttonActions(url) {
   } catch (error) {
     console.error("Erro ao buscar dados do usuário:", error);
   }
+
+  function toggleDarkMode(isDarkModeEnabled) {
+    if (isDarkModeEnabled) {
+        document.body.classList.add('dark-mode');
+    } else {
+        document.body.classList.remove('dark-mode');
+    }
+}
+
 }

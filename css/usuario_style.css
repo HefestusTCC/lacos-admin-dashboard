@@ -245,7 +245,7 @@ aside .sidebar a:hover span {
 
 main {
     margin-top: 1.4rem;
-    width: 100%;
+    width: 110%;
     max-width: 100vw;
 }
 
@@ -274,10 +274,9 @@ main .parceria-container {
     width: 150%;
     transform: translate(-1%);
     overflow: visible;
-    /* Permitir que o dropdown seja exibido */
-    /* Remover a altura fixa */
+    color: var(--color-white);
     min-height: 10%;
-    /* Ajuste dinâmico para evitar cortar conteúdo */
+    
 }
 
 .parceria-info {
@@ -285,6 +284,7 @@ main .parceria-container {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    color: var(--color-white);
 }
 
 .parceria-image {
@@ -656,7 +656,7 @@ background-color:var(--color-primary);
 
 .card {
     background-color: #FF6E15;
-    color: white;
+       color: var(--color-text);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -690,44 +690,47 @@ table {
 }
 
 tr{
-    align-items: center;
-    text-align: left;
- 
-    border-radius:10px;
 
+    align-items: center;
+    text-align: center;
+    border-radius:10px;
 }
 
 td {
-
     align-items: center;
     border: 1px solid #ddd;
     padding: 8px;
-    text-align: left;
+    text-align: center;
+    color: var(--color-white);
+    vertical-align: middle;
 }
 
 th {
-    align-items: center;
-        
-        padding: 8px;
-        text-align: center;
-    
-    
+    align-items: center;  
+    padding: 8px;
+    text-align: center;  
     text-align: left;
     align-items: left;
-    
     font-weight: bold;
     font-size: 15px;
 }
 
 
-button{
+button {
     padding: 5px 10px;
     border: none;
-    color: rgb(0, 0, 0);
+    color: var(--color-dark);
+    
     cursor: pointer;
     font-size: 13px;
-    background-color: #f6f6f9;
+    background-color: var(--color-background);
+    /* Fundo baseado na variável */
 }
 
 
-
+.dark-mode td {
+    background-color: white;
+    /* Ou a cor que você deseja */
+    color: black;
+    /* Cor do texto */
+}

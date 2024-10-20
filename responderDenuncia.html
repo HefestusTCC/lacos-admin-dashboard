@@ -96,7 +96,6 @@
                 </div>
             </div>
 
-            <!-- Formulário de resposta -->
             <div id="formularioResposta">
                 <h2>Responder Denúncia</h2>
                 <form id="respostaEmailForm">
@@ -113,6 +112,23 @@
             </div>
 
         </main>
+            <div class="right">
+            <div class="top">
+                <button id="menu_btn">
+                    <span class="material-symbols-sharp"> menu</span>
+                </button>
+               
+                <div class="profile">
+                    <div class="info">
+                        <p>Olá, <b id="adminName"></b></p>
+                        <small class="text-muted">Admin</small>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="" id="profilePicture" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -120,18 +136,15 @@
             window.location.href = "denuncias.html";
         }
 
-        // Função para mostrar o formulário de resposta
         function mostrarFormularioResposta() {
             const formulario = document.getElementById("formularioResposta");
-            formulario.style.display = "block";  // Torna o formulário visível
+            formulario.style.display = "block";
         }
 
         function enviarResposta() {
 
             const assunto = document.getElementById("assunto").value;
             const mensagem = document.getElementById("mensagem").value;
-
-         
             const dataResposta = new Date();
             const dataFormatada = dataResposta.toLocaleDateString();
             const horaFormatada = dataResposta.toLocaleTimeString();
@@ -147,20 +160,21 @@
                     <p><strong>Data de envio:</strong> ${dataFormatada} às ${horaFormatada}</p>
                 `;
 
-                // Insere a resposta enviada abaixo da div de denúncias
                 const divDenuncias = document.getElementById("divDenuncias");
+
                 divDenuncias.appendChild(respostaEnviada);
-
-                // Limpa o formulário
                 document.getElementById("respostaEmailForm").reset();
-
-                // Oculta o formulário
                 document.getElementById("formularioResposta").style.display = "none";
             } else {
                 alert("Preencha todos os campos!");
             }
         }
     </script>
+     <script type="module" src="./js/grafico_post_trimestral.js"></script> 
+    <script type="module" src="./js/card_index.js"></script> 
+    <script type="module" src="./js/card_user.js"></script>
+    <script type="module" src="./js/dashboard.js"></script>
+    <script type="module" src="./js/userData.js"></script>
 </body>
 
 </html>

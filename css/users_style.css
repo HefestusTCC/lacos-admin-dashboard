@@ -256,9 +256,10 @@ main .date input[type='date']{
 }
 
 main .insights{
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.6rem;
+    gap: 1.9rem;
+    
 }
 
 main .insights > div{
@@ -323,7 +324,10 @@ main .insights .new_users svg circle{
     stroke-dashoffset: -200;
     stroke-dasharray: 500;
 }
-
+main .insights .ban_users svg circle {
+    stroke-dashoffset: -200;
+    stroke-dasharray: 500;
+}
 main .insights .new_post svg circle{
     stroke-dashoffset: -25;
     stroke-dasharray: 500;

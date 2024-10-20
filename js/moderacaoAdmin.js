@@ -11,12 +11,12 @@ async function loadUsers() {
 const header = `
     <table>
         <tr style="background-color:#ff7a28b0;">
-            <th style="width: 10%; border-radius:10px 0% 0% 10px;"></th>
-            <th style="width: 20%;">Nome</th>
-            <th style="width: 15%;">Usuário</th>
-            <th style="width: 25%;">Email</th>
-            <th style="width: 10%;">Nível</th>
-            <th style="width: 10%;">Status</th>
+            <th style="width: 10%; border-radius:10px 0px 0px 10px;"></th>
+            <th style="width: 16%; text-align: center; vertical-align: middle;">Nome</th>
+            <th style="width: 15%; text-align: center; vertical-align: middle;">Usuário</th>
+            <th style="width: 26%; text-align: center; vertical-align: middle;">Email</th>
+            <th style="width: 11%; text-align: center; vertical-align: middle;">Nível</th>
+            <th style="width: 13%; text-align: center; vertical-align: middle;">Status</th>
             <th style="width: 10%; border-radius:0px 10px 10px 0px;"></th>
         </tr>
     </table>
@@ -36,14 +36,14 @@ console.log(response);
                 });
             const card = `
                         <tr>
-                            <td style="width: 10%; border-radius:10px 0% 0% 10px;"><img src="${user.profilePictureURL}" alt="Imagem do Usuário" class="parceria-image"></td>
-                            <td style="width: 20%;"><small class="text-muted">${user.name}</small></td>
+                            <td style="width: 10%; text-align:center; border-radius: 10px 0px 0px 0px;"><img src="${user.profilePictureURL}" alt="Imagem do Usuário" class="parceria-image" style="display: block; margin: 0 auto;"></td>
+                            <td style="width: 16%;"><small class="text-muted">${user.name}</small></td>
                             <td style="width: 15%;"><small class="text-muted">${user.username}</small></td>
-                            <td style="width: 25%;"><small class="text-muted">${user.email}</small></td>
-                            <td style="width: 10%;"><small class="text-muted">${viewRole}</small></td>
-                            <td style="width: 10%;"><small class="text-muted">${user.status}</small></td>
+                            <td style="width: 26%;"><small class="text-muted">${user.email}</small></td>
+                            <td style="width: 11%;"><small class="text-muted">${viewRole}</small></td>
+                            <td style="width: 13%;"><small class="text-muted">${user.status}</small></td>
                             <td>
-                                <button style="width: 100%; border-radius: 0px 10px 10px 0px; z-index: 99;" type="button" class="demoteButton" data-id="${user.id}"><a style="width: 100%; z-index: 99;">Remover Admin</a></button>
+                                <button style="width: 100%; border-radius: 0px 10px 10px 0px; cursor:pointer; z-index: 99;" type="button" class="demoteButton" data-id="${user.id}"><a style="width: 100%; z-index: 99; cursor:pointer;">Remover Admin</a></button>
                             </td>
                         </tr>
                             `;
