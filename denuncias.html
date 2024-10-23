@@ -60,19 +60,17 @@
         <!--end aside-->
         <main>
             <h1>Denuncias</h1>
-            <div class="date">
-                <input type="date">
-            </div>
+           
             <div class="div-denuncias">
                     <div class="denuncia" onclick="abrirPaginaDenuncia()">
                         <div class="fotoUsuario">
                             <img src="" alt="Foto do Usuário">
                         </div>
                         <div class="conteudoDenuncia">
-                            <div class="tituloDenuncia">
+                            <div class="message">
                                 <p>Titulo Denuncia</p>
                                 <div class="numeroDenuncia">
-                                    <p>#numero da denuncia</p>
+                                    <p>umero da denuncia</p>
                                 </div>
                             </div>
                             <div class="nomeUserDenuncia">
@@ -84,27 +82,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="div-denuncias">
-                    <div class="denuncia" onclick="abrirPaginaDenuncia()">
-                        <div class="fotoUsuario">
-                            <img src="" alt="Foto do Usuário">
-                        </div>
-                        <div class="conteudoDenuncia">
-                            <div class="tituloDenuncia">
-                                <p>Titulo Denuncia</p>
-                                <div class="numeroDenuncia">
-                                    <p>#numero da denuncia</p>
-                                </div>
-                            </div>
-                            <div class="nomeUserDenuncia">
-                                <p>Nome da pessoa que fez a denuncia</p>
-                            </div>
-                            <div class="statusResposta">
-                                <p>Se foi respondida ou nao</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              
         </main>
            <div class="right">
             <div class="top">
@@ -123,19 +101,17 @@
                 </div>
             </div>
         </div>
-    
     </div>
-
+    </div>
     <script>
-        function abrirPaginaDenuncia() {
+         function abrirPaginaDenuncia() {
             
             window.location.href = "responderDenuncia.html";
-        }
+          }
     </script>
-        <script type="module" src="./js/grafico.js"></script>
-    <script type="module" src="./js/card_dashboad.js"></script>
-    <script type="module" src="./js/dashboard.js"></script>
-    <script type="module" src="./js/userData.js"></script>
+    <script type="module" src="./js/moderacaoDenuncia.js"></script>
+    <script type="text/javascript" src="./js/userData.js"></script>
+   
 </body>
 
 </html>

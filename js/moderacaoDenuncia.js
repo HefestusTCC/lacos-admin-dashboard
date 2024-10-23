@@ -1,51 +1,76 @@
+import apiFetch from './api.js';
 import genericFetch from './genericApi.js';
 
 window.onload = function () {
-    loadDenuncias();
+  loadDenuncias();
 };
 
 async function loadDenuncias() {
-    try {
-        // Fazendo a requisição GET para buscar as denúncias pendentes
-        const response = await genericFetch("/tickets/pendent", 'GET');
-        const data = await response.json();
-        const denuncias = data.data.data;
-            console.log(denuncias);
-        if (data && data.data.length > 0) {
-            const listaDenuncias = document.getElementById('listaDenuncias');
-           
+  const denunciaContainer = document.querySelector('.div-denuncias');
+  denunciaContainer.innerHTML = ''; // Limpa o container antes de preencher
 
+  try {
+    const response = await apiFetch('/tickets/pendent'); // Fazendo a requisição para obter as denúncias
+    const data = await response.json();
+    const denuncias = data.data;
+    console.log(denuncias)
 
-            data.data.forEach(denuncias => {
-                // Criando o HTML para cada denúncia
-                const denunciaCard = `
-                <div class="denuncia" data-id="${denuncias.id}">
-                  <div class="fotoUsuario">
-                    <img src="${denuncias.author.profilePictureURL}" alt="Foto do Usuário">
-                  </div>
-                  <div class="conteudoDenuncia">
-                    <div class="numeroDenuncia">
-                      <p>#${denuncias.id}</p>
-                    </div>
-                    <div class="nomeUserDenuncia">
-                      <p>${denuncias.author.name}</p>
-                    </div>
-                    <button class="responderBtn" onclick="abrirPaginaDenuncia(${denuncia.id})">Responder</button>
-                  </div>
+    if (denuncias.length > 0) {
+      denuncias.forEach((denuncia) => {
+        const denunciaElement = `
+          <div class="denuncia" data-id="${data.id}">
+            <div class="fotoUsuario">
+              <img src="${denuncia.author.profilePictureURL}" alt="Foto do Usuário">
+            </div>
+            <div class="conteudoDenuncia">
+               <div class="nomeUserDenuncia">
+                <p>${denuncia.author.name}</p>
+          </div>
+                <div class="message">
+                  <p>${denuncia.message}</p>
                 </div>
-              `;
-                // Inserindo o card de denúncia no HTML
-                listaDenuncias.innerHTML += denunciaCard;
-            });
-        } else {
-            console.log('Nenhuma denúncia pendente encontrada.');
-        }
-    } catch (error) {
-        console.error('Erro ao carregar as denúncias:', error);
+              </div>
+           
+            </div>
+          </div>
+        `;
+        denunciaContainer.innerHTML += denunciaElement;
+      });
+
+      assignButtonEvents();
+    } else {
+      denunciaContainer.innerHTML = '<p>Nenhuma denúncia encontrada.</p>';
     }
+  } catch (error) {
+    console.error('Erro ao carregar denúncias:', error);
+  }
 }
 
-// Função para redirecionar o admin para a página de resposta da denúncia
-function abrirPaginaDenuncia(id) {
-    window.location.href = `responderDenuncia.html?denunciaId=${id}`;
+function assignButtonEvents() {
+  document.querySelectorAll('.responderBtn').forEach((button) => {
+    button.addEventListener('click', async (event) => {
+      const denunciaId = event.target.closest('.denuncia').getAttribute('data-id');
+      const resposta = prompt('Digite sua resposta para a denúncia:');
+      if (resposta) {
+        await enviarResposta(denunciaId, resposta);
+      }
+    });
+  });
 }
+
+async function enviarResposta(denunciaId, resposta) {
+  try {
+    const response = await genericFetch(`/api/denuncias/${denunciaId}/responder, { resposta }, 'POST'`);
+    const result = await response.json();
+
+    if (result.success) {
+      alert('Resposta enviada com sucesso!');
+      loadDenuncias(); // Recarrega as denúncias após a resposta
+    } else {
+      alert('Falha ao enviar resposta.');
+    }
+  } catch (error) {
+    console.error('Erro ao enviar resposta:', error);
+  }
+}
+
