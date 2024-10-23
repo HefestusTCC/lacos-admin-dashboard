@@ -7,62 +7,96 @@ const denunciaContainer = document.querySelector('.div-denuncias');
 
 if (denuncia.post != null) {
     const denunciaElement = `
-    <div class="denuncia" data-id="${denuncia.id}">
-      <div class="fotoUsuario">
-        <img src="${denuncia.author.profilePictureURL}" alt="Foto do Usuário">
-      </div>
-      <div class="conteudoDenuncia">
-         <div class="nomeUserDenuncia">
-          <p>${denuncia.author.name}</p>
-    </div>
-          <div class="message">
-            <p>${denuncia.message}</p>
+        <div class = containerDenuncias>
+          <div class="denuncia" data-id="${denuncia.id}">
+            <div class="fotoUsuario">
+              <img src="${denuncia.author.profilePictureURL}" alt="Foto do Usuário">
+            </div>
+            <div class="conteudoDenuncia">
+               <div class="nomeUserDenuncia">
+                <div>${denuncia.author.name}</div>
           </div>
-        </div>
-        <div class="responderBtn">
-          Responder
-        </div>
-      </div>
-        <div class="denunciaContent">
-          <div class="fotoUsuario">
-            <img src="${denuncia.post.author.profilePictureURL}"></img>
+                <div class="message">
+                  <div>${denuncia.message}</div>
+                </div>
+              </div>
+            </div>
+              <div class="denunciaContent">
+               
+                 <div class="postDenunciado">
+                 <div class = "userDenunciado">
+                  <div class="fotoUsuario">
+                  <img src="${denuncia.post.author.profilePictureURL}"></img>
+                </div>
+                  <div class="conteudoDenuncia">
+                <div class="nomeAutorPost">${denuncia.post.author.name}</div> 
+
+                <div class"userAutorPost">@${denuncia.post.author.username}</div>
+                </div>
+                </div>
+                <p class="descDenuncia">${denuncia.post.content}</p>
+                ${denuncia.post.image != null ? `<img class="imgDenunciada" src=\"${denuncia.post.image}\"></img>` : ""}
+                <img src=""></img>
+                
+                </div>
+            </div>
+              <div id="formularioResposta">
+                <h2>Responder Denúncia</h2>
+                <form id="respostaEmailForm">
+                    
+                    <label for="assunto">Assunto:</label>
+                    <br>
+                    <input type="text" id="assunto" name="assunto" required><br><br>
+
+                    <label for="mensagem">Mensagem:</label><br>
+                    <textarea id="mensagem" name="mensagem" rows="4" required></textarea><br><br>
+
+                    <button type="button" class="btnEnviar">Enviar</button>
+                </form>
+            </div>
           </div>
-          <p>${denuncia.post.author.name}</p> <p>@${denuncia.post.author.username}</p>
-          ${denuncia.post.image != null ? `<img src=\"${denuncia.post.image}\"></img>` : ""}
-          <img src=""></img>
-          <p>${denuncia.post.content}</p>
-      </div>
-    </div>
-  `;
-  denunciaContainer.innerHTML += denunciaElement;
-}
-if (denuncia.comment != null) {
-    const denunciaElement = `
-    <div class="denuncia" data-id="${denuncia.id}">
-      <div class="fotoUsuario">
-        <img src="${denuncia.author.profilePictureURL}" alt="Foto do Usuário">
-      </div>
-      <div class="conteudoDenuncia">
-         <div class="nomeUserDenuncia">
-          <p>${denuncia.author.name}</p>
-    </div>
-          <div class="message">
-            <p>${denuncia.message}</p>
           </div>
-        </div>
-        <div class="responderBtn">
-          Responder
-        </div>
-      </div>
-      <div class="denunciaContent">
-          <div class="fotoUsuario">
-            <img src="${denuncia.comment.author.profilePictureURL}"></img>
+       
+
+
+        `;
+          denunciaContainer.innerHTML += denunciaElement;
+        }
+        if (denuncia.comment != null) {
+          const denunciaElement = `
+          <div class="denuncia" data-id="${denuncia.id}">
+            <div class="fotoUsuario">
+              <img src="${denuncia.author.profilePictureURL}" alt="Foto do Usuário">
+            </div>
+            <div class="conteudoDenuncia">
+               <div class="nomeUserDenuncia">
+                <p>${denuncia.author.name}</p>
           </div>
-          <p>${denuncia.comment.author.name}</p> <p>@${denuncia.comment.author.username}</p>
-          ${denuncia.comment.image != null ? `<img src=\"${denuncia.comment.image}\"></img>` : ""}
-          <p>${denuncia.comment.content}</p>
-      </div>
-    </div>
+                <div class="message">
+                  <p>${denuncia.message}</p>
+                </div>
+              </div>
+            </div>
+            <div class="denunciaContent">
+                 <div class="postDenunciado">
+                 <div class = "userDenunciado">
+                  <div class="fotoUsuario">
+                  <img src="${denuncia.comment.author.profilePictureURL}"></img>
+                </div>
+                  <div class="conteudoDenuncia">
+                <div class="nomeAutorPost">${denuncia.comment.author.name}</div> 
+
+                <div class"userAutorPost">@${denuncia.comment.author.username}</div>
+                </div>
+                </div>
+                <p class="descDenuncia">${denuncia.comment.content}</p>
+                ${denuncia.comment.image != null ? `<img class="imgDenunciada" src=\"${denuncia.comment.image}\"></img>` : ""}
+                <img src=""></img>
+                
+                </div>
+            </div>
+          </div>
+          </div>
   `;
   denunciaContainer.innerHTML += denunciaElement;
 }

@@ -3,7 +3,7 @@
       height: auto;
       padding: 10px;
   }
-  
+  btnEnviar
 
   .denuncia {
       cursor: pointer;
@@ -137,7 +137,7 @@ h2{
     margin-bottom:10px ;
 }
   textarea {
-      width: 50%;
+      width: 100%;
       padding: 10px;
       margin-top: 10px;
       font-size: 14px;
@@ -145,7 +145,7 @@ h2{
   }
 
   input[type="text"] {
-      width: 50%;
+      width: 100%;
       padding: 10px;
       margin-top: 10px;
       font-size: 14px;
@@ -169,7 +169,8 @@ h2{
             background-color: #e96c18;
             color: rgb(255, 255, 255);
             border: none;
-    
+    margin-top: 20px;
+    margin-left: 200px;
             cursor: pointer;
     border-radius: 10px;
             height: 40px;
@@ -203,9 +204,174 @@ h2{
   }
 
 #formularioResposta{
+    align-items: center;
     padding-top: 20px;
     border-radius: 10px;
     padding: 10px;
     background-color: #eceaea;
     width: 100%;
+    height: 370px;
+}
+
+.div-denuncias {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+}
+.containerDenuncias{
+  height: 1000px;
+  width: 550px;
+  background-color: #8c8c8c;
+      border: 2px solid black; 
+      padding: 20px;
+      margin: 30px;
+      border-radius: 10px;
+  
+}
+.nomeAutorPost{
+  padding: 5px;
+  font-size: 18px;
+  text-align: left;
+  font-weight: bold;
+  color: black;
+}
+.denuncia {
+  border: 2px solid black; 
+  border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    height: 100px;
+    border-radius: 10px;
+    width: 100%;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #d9d9d9;
+    color: black;
+    
+}
+.descDenuncia{
+  color: black;
+  padding: 5px;
+  font-size: 18px;
+  text-align: left;
+}
+.userDenunciado{
+  
+  cursor: pointer;
+    display: flex;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    height: 100px;
+    border-radius: 10px;
+    width: 100%;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #d9d9d9;
+}
+.postDenunciado{
+  border: 2px solid black; 
+  border-radius: 10px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  height: 450px;
+  border-radius: 10px;
+  width: 100%;
+  align-items: center;
+  padding: 10px;
+
+  background-color: #d9d9d9;
+  
+}
+
+.userAutorPost{
+  padding: 5px;
+  font-size: 14px;
+  color: black;
+}
+.fotoUsuario img {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.conteudoDenuncia {
+    flex: 1;
+}
+
+.tituloDenuncia {
+    display: flex;
+    font-size: 15px;
+    padding: 5px;
+}
+
+.numeroDenuncia {
+    margin-left: 20px;
+}
+
+.nomeUserDenuncia {
+    padding: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;
+    color: black;
+}
+
+.message{
+  padding: 5px;
+    font-size: 14px;
+    color: black;
+}
+
+.statusResposta {
+    padding: 5px;
+    color: rgb(0, 0, 0);
+    font-size: 12px;
+}
+
+.painel {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: white;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.conteudo-painel {
+    padding: 20px;
+    background-color: #f1f1f1;
+}
+
+.fechar {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 36px;
+    cursor: pointer;
+}
+
+.imgDenunciada{
+
+  width: 100%;
+  height: 65%;
+  border-radius: 10px;
+}
+
+.responderBtn{
+  font-size: 14;
+  text-align: center;
+  width: 90px;
+  height: 25px;
+  background-color: #c1c0c0;
+  border-radius: 20px;
 }

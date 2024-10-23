@@ -21,16 +21,17 @@ async function loadDenuncias() {
       denuncias.forEach((denuncia) => {
         if (denuncia.post != null) {
           const denunciaElement = `
+          <div class = containerDenuncias>
           <div class="denuncia" data-id="${denuncia.id}">
             <div class="fotoUsuario">
               <img src="${denuncia.author.profilePictureURL}" alt="Foto do Usuário">
             </div>
             <div class="conteudoDenuncia">
                <div class="nomeUserDenuncia">
-                <p>${denuncia.author.name}</p>
+                <div>${denuncia.author.name}</div>
           </div>
                 <div class="message">
-                  <p>${denuncia.message}</p>
+                  <div>${denuncia.message}</div>
                 </div>
               </div>
               <div class="responderBtn">
@@ -38,15 +39,29 @@ async function loadDenuncias() {
               </div>
             </div>
               <div class="denunciaContent">
-                <div class="fotoUsuario">
+               
+                 <div class="postDenunciado">
+                 <div class = "userDenunciado">
+                  <div class="fotoUsuario">
                   <img src="${denuncia.post.author.profilePictureURL}"></img>
                 </div>
-                <p>${denuncia.post.author.name}</p> <p>@${denuncia.post.author.username}</p>
-                ${denuncia.post.image != null ? `<img src=\"${denuncia.post.image}\"></img>` : ""}
+                  <div class="conteudoDenuncia">
+                <div class="nomeAutorPost">${denuncia.post.author.name}</div> 
+
+                <div class"userAutorPost">@${denuncia.post.author.username}</div>
+                </div>
+                </div>
+                <p class="descDenuncia">${denuncia.post.content}</p>
+                ${denuncia.post.image != null ? `<img class="imgDenunciada" src=\"${denuncia.post.image}\"></img>` : ""}
                 <img src=""></img>
-                <p>${denuncia.post.content}</p>
+                
+                </div>
             </div>
           </div>
+          </div>
+       
+
+
         `;
           denunciaContainer.innerHTML += denunciaElement;
         }
@@ -69,13 +84,24 @@ async function loadDenuncias() {
               </div>
             </div>
             <div class="denunciaContent">
-                <div class="fotoUsuario">
+                 <div class="postDenunciado">
+                 <div class = "userDenunciado">
+                  <div class="fotoUsuario">
                   <img src="${denuncia.comment.author.profilePictureURL}"></img>
                 </div>
-                <p>${denuncia.comment.author.name}</p> <p>@${denuncia.comment.author.username}</p>
-                ${denuncia.comment.image != null ? `<img src=\"${denuncia.comment.image}\"></img>` : ""}
-                <p>${denuncia.comment.content}</p>
+                  <div class="conteudoDenuncia">
+                <div class="nomeAutorPost">${denuncia.comment.author.name}</div> 
+
+                <div class"userAutorPost">@${denuncia.comment.author.username}</div>
+                </div>
+                </div>
+                <p class="descDenuncia">${denuncia.comment.content}</p>
+                ${denuncia.comment.image != null ? `<img class="imgDenunciada" src=\"${denuncia.comment.image}\"></img>` : ""}
+                <img src=""></img>
+                
+                </div>
             </div>
+          </div>
           </div>
         `;
           denunciaContainer.innerHTML += denunciaElement;
