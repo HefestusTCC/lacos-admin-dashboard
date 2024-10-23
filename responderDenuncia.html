@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" />
     <link rel="stylesheet" href="css/parceria_style.css">
     <link rel="stylesheet" href="css/respDenuncias.css">
-   
+    
 </head>
 
 <body>
@@ -72,28 +72,8 @@
             </div>
 
             <div id="divDenuncias" class="div-denuncias">
-                <div class="denuncia">
-                    <div class="fotoUsuario">
-                        <img src="" alt="Foto do Usuário">
-                    </div>
-                    <div class="conteudoDenuncia">
-                        <div class="tituloDenuncia">
-                            <p>Titulo Denuncia</p>
-                            <div class="numeroDenuncia">
-                                <p>#numero da denuncia</p>
-                            </div>
-                            <div class="statusResposta">
-                                <p>Respondida ou pendente</p>
-                            </div>
-                        </div>
-                        <div class="nomeUserDenuncia">
-                            <p>Nome da pessoa que fez a denuncia</p>
-                        </div>
-                        <div class="corpoDenuncia">
-                            <p>Denuncia Detalhada</p>
-                        </div>
-                    </div>
-                </div>
+                
+                
             </div>
 
             <div id="formularioResposta">
@@ -107,7 +87,7 @@
                     <label for="mensagem">Mensagem:</label><br>
                     <textarea id="mensagem" name="mensagem" rows="4" required></textarea><br><br>
 
-                    <button type="button" class="btnEnviar" onclick="enviarResposta()">Enviar</button>
+                    <button type="button" class="btnEnviar">Enviar</button>
                 </form>
             </div>
 
@@ -134,7 +114,7 @@
 
     <script>
         function abrirPaginaDenuncia() {
-            window.location.href = "denuncias.html";
+            // window.location.href = "denuncias.html";
         }
 
         function mostrarFormularioResposta() {
@@ -173,7 +153,7 @@
 
         
     </script>
-     <script type="module" src="./js/moderacaoDenuncia.js"></script>
+     <script type="module" src="./js/responderDenuncia.js"></script>
 </body>
 
 </html>
