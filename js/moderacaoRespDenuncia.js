@@ -12,7 +12,7 @@ async function loadDenuncias() {
   denunciaContainer.innerHTML = ''; // Limpa o container antes de preencher
 
   try {
-    const response = await apiFetch('/tickets/pendent'); // Fazendo a requisição para obter as denúncias
+    const response = await apiFetch('/tickets/resolved'); // Fazendo a requisição para obter as denúncias
     const data = await response.json();
     denuncias = data.data;
     console.log(denuncias)
@@ -20,12 +20,18 @@ async function loadDenuncias() {
      if (denuncias.length > 0) {
        denuncias.forEach((denuncia) => {
          if (denuncia.post != null) {
-           const denunciaElement = `
+          denuncia.answers.forEach((resposta) =>{
+      const denunciaElement = `
+           
+          
+ 
+          
+           
           <div class = containerDenuncias>
+          <div class="nomeUserDenuncia">
+          
           <div class="denuncia" data-id="${denuncia.id}">
-          <div class="idDenuncia">
-          <p class="idDenuncias">#${denuncia.id}</p>
-          </div>
+         
           
             <div class="fotoUsuario">
               <img src="${
@@ -40,9 +46,7 @@ async function loadDenuncias() {
                   <div>${denuncia.message}</div>
                 </div>
               </div>
-              <div class="responderBtn">
-                Responder
-              </div>
+              
             </div>
               <div class="denunciaContent">
                
@@ -70,12 +74,38 @@ async function loadDenuncias() {
                 </div>
             </div>
           </div>
+        
+         
+     
+         
+     
+          <div class="RespostaDenuncia" data-id="${denuncia.id}">
+         
+          
+            <div class="fotoUsuario">
+              <img src="${
+                resposta.user.profilePictureURL
+              }" alt="Foto do Usuário">
+            </div>
+            <div class="conteudoDenuncia">
+               <div class="nomeUserDenunciaRespondida">
+                <div>${resposta.user.name} @${resposta.user.username}</div>
           </div>
+                <div class="messageResposta">
+                  <div>${resposta.message}</div>
+                </div>
+              </div>
+              
+            </div>
+     
+
+
+        `
+        ;   denunciaContainer.innerHTML += denunciaElement;
+      })
        
-
-
-        `;
-           denunciaContainer.innerHTML += denunciaElement;
+        
+        
          }
          if (denuncia.comment != null) {
            const denunciaElement = `

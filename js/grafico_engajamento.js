@@ -10,35 +10,37 @@ function drawChart() {
       ["Jul", 50],
       ["Ago", 76],
       ["Set", 80],
+      ["Out", 85],
+      ["Nov", 90],
     ]);
 
     // Configurações do gráfico
     var options = {
-        title: 'Engajamento Mensal',
-        curveType: 'function',
-        legend: { position: 'bottom' },
-        hAxis: {
-            title: 'Mês',
-            titleTextStyle: { color: '#333' },
-            slantedText: true,
-            slantedTextAngle: 45,
-            textStyle: { fontSize: 12 }
+      title: "Engajamento Mensal",
+      curveType: "function",
+      legend: { position: "bottom" },
+      hAxis: {
+        title: "Mês",
+        titleTextStyle: { color: "#333" },
+        slantedText: true,
+        slantedTextAngle: 45,
+        textStyle: { fontSize: 12 },
+      },
+      vAxis: {
+        title: "Postagens",
+        titleTextStyle: { color: "#333" },
+        textStyle: { fontSize: 12 },
+      },
+      lineWidth: 3, // Largura da linha
+      pointSize: 5, // Tamanho dos pontos
+      series: {
+        0: {
+          color: "#FF6E15", // Cor da linha
+          lineDashStyle: [4, 4], // Linha pontilhada
         },
-        vAxis: {
-            title: 'Postagens',
-            titleTextStyle: { color: '#333' },
-            textStyle: { fontSize: 12 }
-        },
-        lineWidth: 3,  // Largura da linha
-        pointSize: 5,  // Tamanho dos pontos
-        series: {
-            0: {
-                color: '#ffb36b',  // Cor da linha
-                lineDashStyle: [4, 4]  // Linha pontilhada
-            }
-        },
-        backgroundColor: '#f1f8e9'
-        // Cor de fundo do gráfico
+      },
+      backgroundColor: "#fff",
+      // Cor de fundo do gráfico
     };
 
     // Criar o gráfico

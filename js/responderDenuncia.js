@@ -1,16 +1,26 @@
-import apiFetch from './api.js';
-import genericFetch from './genericApi.js';
+import apiFetch from "./api.js";
+import genericFetch from "./genericApi.js";
 
-const denunciaId = sessionStorage.getItem('denunciaId');
-const denuncia = JSON.parse(sessionStorage.getItem('denuncia'));
-const denunciaContainer = document.querySelector('.div-denuncias');
+const denunciaId = sessionStorage.getItem("denunciaId");
+const denuncia = JSON.parse(sessionStorage.getItem("denuncia"));
+const denunciaContainer = document.querySelector(".div-denuncias");
 
 if (denuncia.post != null) {
-    const denunciaElement = `
+  const denunciaElement = `
+  
+    <button class="btnVoltar">
+                <a href="denuncias.html">Voltar</a>
+            </button>
+            
         <div class = containerDenuncias>
           <div class="denuncia" data-id="${denuncia.id}">
+          <div class="idDenuncia">
+          <p class="idDenuncias">#${denuncia.id}</p>
+          </div>
             <div class="fotoUsuario">
-              <img src="${denuncia.author.profilePictureURL}" alt="Foto do Usuário">
+              <img src="${
+                denuncia.author.profilePictureURL
+              }" alt="Foto do Usuário">
             </div>
             <div class="conteudoDenuncia">
                <div class="nomeUserDenuncia">
@@ -31,16 +41,24 @@ if (denuncia.post != null) {
                   <div class="conteudoDenuncia">
                 <div class="nomeAutorPost">${denuncia.post.author.name}</div> 
 
-                <div class"userAutorPost">@${denuncia.post.author.username}</div>
+                <div class"userAutorPost">@${
+                  denuncia.post.author.username
+                }</div>
                 </div>
                 </div>
                 <p class="descDenuncia">${denuncia.post.content}</p>
-                ${denuncia.post.image != null ? `<img class="imgDenunciada" src=\"${denuncia.post.image}\"></img>` : ""}
+                ${
+                  denuncia.post.image != null
+                    ? `<img class="imgDenunciada" src=\"${denuncia.post.image}\"></img>`
+                    : ""
+                }
                 <img src=""></img>
                 
                 </div>
             </div>
-              <div id="formularioResposta">
+              
+          </div>
+          <div id="formularioResposta">
                 <h2>Responder Denúncia</h2>
                 <form id="respostaEmailForm">
                     
@@ -55,20 +73,22 @@ if (denuncia.post != null) {
                 </form>
             </div>
           </div>
-          </div>
        
 
 
         `;
-          denunciaContainer.innerHTML += denunciaElement;
-        }
-        if (denuncia.comment != null) {
-          const denunciaElement = `
+  denunciaContainer.innerHTML += denunciaElement;
+}
+if (denuncia.comment != null) {
+  const denunciaElement = `
           <div class="denuncia" data-id="${denuncia.id}">
             <div class="fotoUsuario">
-              <img src="${denuncia.author.profilePictureURL}" alt="Foto do Usuário">
+              <img src="${
+                denuncia.author.profilePictureURL
+              }" alt="Foto do Usuário">
             </div>
             <div class="conteudoDenuncia">
+            
                <div class="nomeUserDenuncia">
                 <p>${denuncia.author.name}</p>
           </div>
@@ -84,13 +104,21 @@ if (denuncia.post != null) {
                   <img src="${denuncia.comment.author.profilePictureURL}"></img>
                 </div>
                   <div class="conteudoDenuncia">
-                <div class="nomeAutorPost">${denuncia.comment.author.name}</div> 
+                <div class="nomeAutorPost">${
+                  denuncia.comment.author.name
+                }</div> 
 
-                <div class"userAutorPost">@${denuncia.comment.author.username}</div>
+                <div class"userAutorPost">@${
+                  denuncia.comment.author.username
+                }</div>
                 </div>
                 </div>
                 <p class="descDenuncia">${denuncia.comment.content}</p>
-                ${denuncia.comment.image != null ? `<img class="imgDenunciada" src=\"${denuncia.comment.image}\"></img>` : ""}
+                ${
+                  denuncia.comment.image != null
+                    ? `<img class="imgDenunciada" src=\"${denuncia.comment.image}\"></img>`
+                    : ""
+                }
                 <img src=""></img>
                 
                 </div>
@@ -103,31 +131,37 @@ if (denuncia.post != null) {
 
 // Quando você ajustar o estilo da denuncias, só colar os dois ifs no lugar dos IFs acima
 
-async function responder(){
-    const assunto = document.getElementById("assunto").value;
-    const mensagem = document.getElementById("mensagem").value;
-    if (!assunto || !mensagem){
-        alert("preencha todos os campos");
-        return;
-    }
-    const formData = {
-        subject: assunto,
-        message: mensagem,
-        status: "resolvido"
-    }
-    try{
-        const response = await genericFetch(`/tickets/${denunciaId}/answer`, {}, 'POST', JSON.stringify(formData));
-        let data = await response.json();
-        alert('Denuncia respondida com sucesso!');
-        sessionStorage.setItem("denunciaId", null);
-        sessionStorage.setItem("denuncia", null);
-        window.location.href = "denuncias.html";
-    } catch (error){
-        console.log(error);
-    }
-
+async function responder() {
+  const assunto = document.getElementById("assunto").value;
+  const mensagem = document.getElementById("mensagem").value;
+  if (!assunto || !mensagem) {
+    alert("preencha todos os campos");
+    return;
+  }
+  const formData = {
+    subject: assunto,
+    message: mensagem,
+    status: "resolvido",
+  };
+  try {
+    const response = await genericFetch(
+      `/tickets/${denunciaId}/answer`,
+      {},
+      "POST",
+      JSON.stringify(formData)
+    );
+    let data = await response.json();
+    alert("Denuncia respondida com sucesso!");
+    sessionStorage.setItem("denunciaId", null);
+    sessionStorage.setItem("denuncia", null);
+    window.location.href = "denuncias.html";
+  } catch (error) {
+    console.log(error);
+  }
 }
 
-document.querySelector('.btnEnviar').addEventListener('click', async function(){
+document
+  .querySelector(".btnEnviar")
+  .addEventListener("click", async function () {
     responder();
-});
+  });

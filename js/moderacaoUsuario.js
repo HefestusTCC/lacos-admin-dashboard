@@ -6,57 +6,79 @@ window.onload = function () {
 };
 
 async function loadUsers() {
-  $('#listaUsuarios').empty();
+  $("#listaUsuarios").empty();
 
   const header = `
-    <table>
-        <tr style=" background-color:#ff7a28b0;">
-            <th style="width: 6%; border-radius:10px 0px 0px 10px;"></th>
-            <th style="width: 12%; text-align: center; vertical-align: middle;">Nome</th>
-            <th style="width: 12%; text-align: center; vertical-align: middle;">Usuário</th>
-            <th style="width: 20%; text-align: center; vertical-align: middle;">Email</th>
-            <th style="width: 15%; text-align: center; vertical-align: middle;">Nível</th>
-            <th style="width: 3%; text-align: center; vertical-align: middle;">Status</th>
-            <th style="width: 40%; border-radius:0px 10px 10px 0px;"></th>
-        
-        </tr>
-    </table>
-`;
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr style="background-color:#f5823b;">
+                        <th style="width: 6%; border-radius: 10px 0px 0px 10px"></th>
+                        <th style="width: 9%;">Nome</th>
+                        <th style="width: 15%;">Usuário</th>
+                        <th style="width: 21%;">Email</th>
+                        <th style="width: 10%;">Nível</th>
+                        <th style="width: 10%;">Status</th>
+                        <th style="width: 35%; border-radius: 0px 10px 10px 0px"></th>
+                    </tr>
+                </thead>
+                <tbody>
+    `;
 
   // Insere o cabeçalho no HTML
   $("#listaUsuarios").append(header);
 
-  let response = await getUsers('/report/users/all');
+  let response = await getUsers("/report/users/all");
   if (response.length > 0) {
     response.forEach(function (user) {
-      let viewRole = "";
-      user.roles.forEach((role) => {
-        viewRole = viewRole + role.role + "<br>";
-      });
-      const card = `
-                   <tr>
-                            <td style="width: 10%; text-align:center; border-radius: 10px 0px 0px 0px;"><img src="${user.profilePictureURL}" alt="Imagem do Usuário" class="parceria-image" style="display: block; margin: 0 auto;"></td>
-                            <td style="width: 20%;"><small class="text-muted">${user.name}</small></td>
-                            <td style="width: 15%;"><small class="text-muted">${user.username}</small></td>
-                            <td style="width: 25%;"><small class="text-muted">${user.email}</small></td>
-                            <td style="width: 10%;"><small class="text-muted">${viewRole}</small></td>
-                            <td style="width: 10%;"><small class="text-muted">${user.status}</small></td>
-                            <td><button style="width: 100%; z-index: 99;" type="button" class="promoteButton" data-id="${user.id}"><a style="width: 100%; z-index: 99;">Tornar Admin</a></button></td>
-                            <td><button style="width: 100%; z-index: 99;" type="button" class="demoteButton" data-id="${user.id}"><a style="width: 100%; z-index: 99;">Desbanir Usuário</a></button></td>
-                            <td><button style="width: 100%; z-index: 99;" type="button" class="deleteUser" data-id="${user.id}"><a style="width: 100%; z-index: 99;">Apagar Usuário</a></button></td>
-                            <td style="border-radius: 0px 0px 10px 0px";><button style="width: 100%; z-index: 99;" type="button" class="banUser" data-id="${user.id}"><a style="width: 100%; z-index: 99;">Banir Usuário</a></button></td>
-                            
-                        </tr>    
-    
-     
+      let viewRole = user.roles.map((role) => role.role).join("<br>");
+      const row = `
+                <tr>
+                    <td style="text-align:center;">
+                        <img src="${user.profilePictureURL}" alt="Imagem do Usuário" class="parceria-image">
+                    </td>
+                    <td><small class="text-muted">${user.name}</small></td>
+                    <td><small class="text-muted">${user.username}</small></td>
+                    <td><small class="text-muted">${user.email}</small></td>
+                    <td><small class="text-muted">${viewRole}</small></td>
+                    <td><small class="text-muted">${user.status}</small></td>
+                     <td style="text-align: center;"><button type="button" class="promoteButton" data-id="${user.id}"><img src="./img/tornarAdmin.png" class="img-promote"> Tornar Admin</button></td>
+                  
+</td>
+<td style="text-align: center;">
+    <button class="banUser" data-id="${user.id}">
+    <div class="imgButtons">
+      <img src="./img/banirUsuario.png" class="img-ban">
+      Banir Usuário
+      </div>
+    </button>
+</td>
+<td style="text-align: center;">
+    <button type="button" class="demoteButton" data-id="${user.id}">
+      <div class="imgButtons">
+      <img src="./img/desbanir.png" class="img-demote"> 
+      Desbanir Usuário    
+      </div>
+    </button>
+</td>
+<td style="text-align: center;">
+    <button class="deleteUser" data-id="${user.id}">
+        <img src="./img/remover.png" class="img-delete"> 
+        Apagar Usuário
+    </button>
+</td>
 
-                            `;
-      $("#listaUsuarios").append(card);
-
+                </tr>
+            `;
+      $("#listaUsuarios").append(row);
       assignButtonEvents();
     });
   }
+
+  // Fecha a tabela
+  $("#listaUsuarios").append(`</tbody></table></div>`);
 }
+
 
 $('#searchForm').on('submit', async function (event) {
   event.preventDefault();
@@ -112,7 +134,8 @@ $('#searchForm').on('submit', async function (event) {
                             <td><button style="width: 100%; z-index: 99;" type="button" class="promoteButton" data-id="${user.id}"><a style="width: 100%; z-index: 99;">Tornar Admin</a></button></td>
                             <td><button style="width: 100%; z-index: 99;" type="button" class="banUser" data-id="${user.id}"><a style="width: 100%; z-index: 99;">Banir Usuário</a></button></td>
                             <td><button style="width: 100%; z-index: 99;" type="button" class="demoteButton" data-id="${user.id}"><a style="width: 100%; z-index: 99;">Desbanir Usuário</a></button></td>
-                            <td><button style="width: 100%; z-index: 99;" type="button" class="deleteUser" data-id="${user.id}"><a style="width: 100%; z-index: 99;">Apagar Usuário</a></button></td>
+                            <td><button style="width: 100%; cursor:pointer; z-index: 99;" type="button" class="deleteUser" data-id="${user.id}"><a style="width: 100%; z-index: 99;">Apagar Usuário</a></button></td>
+                            
                             
                             
                         </tr>

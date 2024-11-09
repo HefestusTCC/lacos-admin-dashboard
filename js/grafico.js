@@ -10,27 +10,28 @@ async function drawChart() {
         // Outras opções de configuração
     };
     var data = google.visualization.arrayToDataTable([
-        ['Mês', 'Usuários Totais'],
-        ['Junho', 150],
-        ['Julho', 160],
-        ['Agosto', 175],
-        ['Setembro', 185],
-        
+      ["Mês", "Usuários Totais"],
+      ["Junho", 150],
+      ["Julho", 160],
+      ["Agosto", 175],
+      ["Setembro", 185],
+      ["Outubro", 190],
+      ["Novembro", 195],
     ]);
 
     var options = {
-        title: 'Crescimento de usuários trimestral',
-        chartArea: { width: '50%' },
-        hAxis: {
-            title: 'Número de Usuários',
-            minValue: 0
-        },
-        vAxis: {
-            title: 'Mês'
-        },
-        bars: 'vertical', // Mantém as barras na vertical
-        legend: { position: 'bottom' },
-        colors: ['#ffb36b'] 
+      title: "Crescimento de usuários trimestral",
+      chartArea: { width: "50%" },
+      hAxis: {
+        title: "Número de Usuários",
+        minValue: 0,
+      },
+      vAxis: {
+        title: "Mês",
+      },
+      bars: "vertical", // Mantém as barras na vertical
+      legend: { position: "bottom" },
+      colors: ["#FF6E15"],
     };
 
     var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));

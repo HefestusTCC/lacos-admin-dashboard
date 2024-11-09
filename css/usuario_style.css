@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-    --color-primary: #ff7a28b0;
+    --color-primary: #FF6E15;
     --color-danger: #FF6B6B;
     --color-sucess: #75CE6C;
-    --color-warning: #ffb36b;
+    --color-warning: #FF6E15;
     --color-white: #ffff;
     --color-info-dark: #7d8da1;
     --color-info-light: #dce1eb;
@@ -22,15 +22,6 @@
     --card-padding: 1.8rem;
     --padding-1: 1.2rem;
 
-    --box-shadow: 0 2rem 3rem var(--color-light);
-}
-
-.dark-theme {
-    --color-background: #181a1e;
-    --color-white: #202528;
-    --color-dark: #edeffd;
-    --color-dark-variant: #a3bdcc;
-    --color-light: rgba(0, 0, 0, 0.4);
     --box-shadow: 0 2rem 3rem var(--color-light);
 }
 
@@ -60,7 +51,6 @@ a {
     color: var(--color-dark);
 }
 
-/* olhar aqui dps */
 img {
     display: block;
     width: 100%;
@@ -102,9 +92,8 @@ small {
     margin-top: 5%;
 }
 
-/*legenda card*/
 .text-muted {
-    font-size: 13px;
+    font-size: 12px;
     color: #181a1e;
 }
 
@@ -177,7 +166,6 @@ aside .close {
     display: none;
 }
 
-/*sidebar*/
 
 aside .sidebar {
     display: flex;
@@ -223,11 +211,11 @@ aside .sidebar a.active:before {
     content: '';
     width: 6px;
     height: 100%;
-    background-color: var(--color-primary);
+    background-color: #FF6E15;
 }
 
 aside .sidebar a.active span {
-    color: var(--color-primary);
+    color: #FF6E15;
     margin-left: calc(1rem - 3px);
 }
 
@@ -241,7 +229,6 @@ aside .sidebar a:hover span {
 }
 
 
-/*MAIN*/
 
 main {
     margin-top: 1.4rem;
@@ -261,6 +248,7 @@ main .date input[type='date'] {
     background-color: transparent;
     color: var(--color-dark);
 }
+
 main .parceria-container {
     margin-top: 5%;
     margin-left: 3%;
@@ -276,7 +264,7 @@ main .parceria-container {
     overflow: visible;
     color: var(--color-white);
     min-height: 10%;
-    
+
 }
 
 .parceria-info {
@@ -287,15 +275,7 @@ main .parceria-container {
     color: var(--color-white);
 }
 
-.parceria-image {
-    
-    width: 3.5rem;
-    height: 3.5rem;
-    border-radius: 100%;
-    object-fit: cover;
-    max-width: 3.5rem;
-    max-height: 3.5rem;
-}
+
 
 
 .parceria-details h2 {
@@ -315,14 +295,12 @@ main .parceria-container {
     border-radius: var(--border-radius-1);
     cursor: pointer;
     transition: background-color 0.3s ease;
-    
+
 }
 
 
-/* end main*/
 
 
-/*right*/
 
 .right {
     margin-top: 1.4rem;
@@ -359,7 +337,7 @@ main .parceria-container {
 }
 
 .right .theme-toggler span.active {
-    background: var(--color-primary);
+    background: #f5823b;
     color: var(--color-white);
     border-radius: var(--border-radius-1);
 }
@@ -371,7 +349,6 @@ main .parceria-container {
     width: 100%;
 }
 
-/*media queries*/
 
 @media screen and (max-width: 1200px) {
     .container {
@@ -414,7 +391,7 @@ main .parceria-container {
         margin-right: 40%;
     }
 
-    /* 2*/
+
     @media screen and (max-width: 768px) {
         .container {
             width: 100%;
@@ -531,19 +508,18 @@ main .parceria-container {
     color: var(--color-white);
 }
 
-/* Ajustes para o dropdown */
-/* Estilo do contêiner da lista */
 .lista-usuarios {
-    position: relative; /* Permite que os filhos usem z-index em relação a ele */
+    position: relative;
+
 }
 
-/* Estilo do dropdown */
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: var(--color-white);
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1000; /* Aumente para garantir que esteja no topo */
+    z-index: 1000;
+
     border-radius: var(--border-radius-1);
     padding: 0.5rem 0;
     margin-top: 0.5rem;
@@ -553,18 +529,17 @@ main .parceria-container {
     overflow-y: auto;
 }
 
-/* Estilo dos links no dropdown */
 .dropdown-content a {
     padding: 0.5rem 1rem;
     text-decoration: none;
     display: block;
-    z-index: 999; /* Mantenha menor que o dropdown */
+    z-index: 999;
+
     color: var(--color-dark);
 }
 
-/* Estilo no hover dos links */
 .dropdown-content a:hover {
-    background-color: #ffb36b;
+    background-color: #f5823b;
 }
 
 
@@ -573,80 +548,81 @@ main .parceria-container {
 }
 
 
-  .search-container {
-      margin-top: 1rem;
-      padding: 1rem;
-      border-radius: var(--border-radius-2);
+.search-container {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: var(--border-radius-2);
 
-  }
+}
 
-  .input-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-  }
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
 
-  .input-wrapper input {
-      width: 50%;
-      padding: 0.5rem 1rem;
-      border: 1px solid var(--color-info-light);
-      border-radius: var(--border-radius-1);
-      font-size: 1rem;
-      transition: width 0.3s ease;
-  }
+.input-wrapper input {
+    width: 50%;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-info-light);
+    border-radius: var(--border-radius-1);
+    font-size: 1rem;
+    transition: width 0.3s ease;
+}
 
-  .input-wrapper button {
+.input-wrapper button {
     width: 30%;
     height: 30px;
-      background-color: var(--color-primary);
-      color: var(--color-white);
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: var(--border-radius-1);
-      cursor: pointer;
-  }
+    background-color: #f5823b;
+    color: #f6f6f9;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-1);
+    cursor: pointer;
+}
 
-  .filters {
-      margin-top: 1rem;
-      display: flex;
-      gap: 1rem;
-      transition: all 0.3s ease;
-  }
+.filters {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    transition: all 0.3s ease;
+}
 
-  .filters.hidden {
-      max-height: 0;
-      overflow: hidden;
-      opacity: 0;
-      pointer-events: none;
-  }
+.filters.hidden {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
 
-  .filters input {
-      width: 100%;
-      padding: 0.5rem 1rem;
-      border: 1px solid var(--color-info-light);
-      border-radius: var(--border-radius-1);
-      font-size: 1rem;
-  }
+.filters input {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-info-light);
+    border-radius: var(--border-radius-1);
+    font-size: 1rem;
+}
 
-  .fa-search {
-      font-size: 1.2rem;
-  }
+.fa-search {
+    font-size: 1.2rem;
+}
 
-  #execute-search{
+#execute-search {
     width: 15%;
-    color: white;
+    color: rgb(255, 255, 255);
     font-size: 15px;
     padding: 10px;
     border-radius: 10px;
     cursor: pointer;
-    background-color: coral;
-  }
-   #execute-search:hover {
-background-color:var(--color-primary);
-   }
+    background-color: #f5823b;
+}
+
+#execute-search:hover {
+    background-color: var(--color-primary);
+}
 
 
-   #cards-container {
+#cards-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px;
@@ -655,8 +631,8 @@ background-color:var(--color-primary);
 }
 
 .card {
-    background-color: #FF6E15;
-       color: var(--color-text);
+    background-color: #f5823b;
+    color: var(--color-text);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -678,59 +654,113 @@ background-color:var(--color-primary);
     margin-top: 10px;
 }
 
-table {
-    text-align: center;
-    width: 100%;
-    border-collapse: collapse;
-    
-    font-family: Arial, sans-serif;
-    align-items: center;
-    border-radius: 10%;
-
+.table-container {
+    max-width: 100%;
+    margin: 0 auto;
 }
 
-tr{
+table {
+    
+    width: 100%;
+    border-collapse: collapse;
+}
 
-    align-items: center;
+    
+
+th,
+td {
+    padding: 5px;
     text-align: center;
-    border-radius:10px;
 }
 
 td {
-    align-items: center;
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
-    color: var(--color-white);
     vertical-align: middle;
+    
+}
+
+button {
+    margin: 2px;
+    padding: 3px;
+    background-color: #f6f6f9;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+}
+.img-promote,
+.img-ban,
+.img-demote,
+.img-delete {
+    margin-right: 5px;
+    cursor: pointer;
+}
+.img-promote {
+    width: 25px;
+    margin-left: 10px;
+    height: auto;
+    /* Mantém a proporção */
+}
+
+.img-ban {
+    width: 25px;
+    margin-left: 5px;
+    /* Tamanho específico para o ícone de banir */
+    height: auto;
+    /* Mantém a proporção */
+}
+
+.img-demote {
+    margin-left: 5px;
+    width: 25px;
+    /* Tamanho específico para o ícone de desbanir */
+    height: auto;
+    /* Mantém a proporção */
+}
+
+.img-delete {
+    cursor: pointer;
+    width: 20px;
+    height: auto;
+    margin-left: 13px;
+
+}
+
+
+.parceria-image {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
 }
 
 th {
-    align-items: center;  
-    padding: 8px;
-    text-align: center;  
-    text-align: left;
-    align-items: left;
-    font-weight: bold;
-    font-size: 15px;
-}
-
-
-button {
-    padding: 5px 10px;
-    border: none;
-    color: var(--color-dark);
+    background-color: #f5823b;
     
-    cursor: pointer;
-    font-size: 13px;
-    background-color: var(--color-background);
-    /* Fundo baseado na variável */
+        /* Cor de fundo do cabeçalho */
+        text-align: center;
+        /* Alinhamento do texto, você pode mudar para center ou right se desejar */
+        padding: 10px;
+        font-size: 14px;
+        /* Espaçamento interno das células do cabeçalho */
+        color: #ffffff;
 }
 
 
 .dark-mode td {
     background-color: white;
-    /* Ou a cor que você deseja */
     color: black;
-    /* Cor do texto */
+}
+
+.imgButtons {
+    cursor: pointer;
+    width: 30px;
+    
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 55%;
+    border-radius: 10px;
+    margin: 0 auto;
 }

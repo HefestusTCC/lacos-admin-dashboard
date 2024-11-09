@@ -28,18 +28,18 @@ async function drawChart() {
     ]);
 
     var options = {
-        title: 'Crescimento de post trimestral',
-        chartArea: { width: '50%' },
-        hAxis: {
-            title: 'Número de Posts',
-            minValue: 0
-        },
-        vAxis: {
-            title: 'Mês'
-        },
-        bars: 'vertical', // Mantém as barras na vertical
-        legend: { position: 'bottom' },
-        colors: ['#ffb36b']
+      title: "Crescimento de post trimestral",
+      chartArea: { width: "50%" },
+      hAxis: {
+        title: "Número de Posts",
+        minValue: 0,
+      },
+      vAxis: {
+        title: "Mês",
+      },
+      bars: "vertical", // Mantém as barras na vertical
+      legend: { position: "bottom" },
+      colors: ["#FF6E15"],
     };
 
     var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));

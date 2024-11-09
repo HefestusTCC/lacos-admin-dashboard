@@ -1,0 +1,123 @@
+.botoesOpcoes{
+    background-color: transparent;
+    height: 70px;
+    align-items: end;
+    display: flex;
+    border-bottom: solid 2px #e96c18
+}
+
+button{
+    background-color: transparent;
+    padding: 10px;
+    
+    cursor: pointer;
+    font-size: 13px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+   
+
+.btnTotal:hover,
+.btnPendentes:hover,
+.btnAceitos:hover {
+background-color: #e96c18;
+color: aliceblue;
+}
+
+
+.comunidade {
+    background-color: #f08945;
+    border-radius: 10px;
+    border: 2px solid #000;
+    margin-top: 10px;
+    display: flex;
+}
+
+.imgComunidade {
+    background-color: transparent;
+    margin-right: 10px;
+    padding: 10px;
+    float: left;
+}
+
+.imgComunidade img{
+    width: 60px;
+    height: 60px;
+    
+    align-items: center;
+    padding: 10px;
+}
+
+.infoComunidade {
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    
+    color: black;
+    width: 290px;
+}
+
+.infoComunidade p{
+  padding-bottom: 3px;
+    color: black;
+}
+.nomeComunidade{
+    
+    width: 100%;
+    display: flex;
+}
+.nomeComunidades  {
+font-size: 13px;
+}
+
+.idPedido {
+    
+    font-size: 10px;
+    color: #000;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    width: 80px;
+}
+ .idComunidades{
+margin-left: 10px;
+    font-size: 13px;
+ }
+
+.dataDoPedido{
+    padding: 10px;
+    width: 140px;
+    display: flex;
+        align-items: center;
+        justify-content: center;
+    background-color: transparent;
+    margin-left: auto;
+}
+p {
+    color: #000;
+    
+    font-size: 10px;
+    font-weight: bold;
+}
+.statusPedido {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    background-color: transparent;
+    margin-left: auto;
+    
+}
+
+.imgRefuse{
+    width: 27px;
+    height: 27px;
+}
+
+.titulo{
+    font-size: 20px;
+}

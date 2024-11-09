@@ -4,12 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usuários</title>
+    <title>Denuncias</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" />
-    <link rel="stylesheet" href="css/usuario_style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/parceria_style.css">
+    <link rel="stylesheet" href="css/denunciasRespondidas.css">
 </head>
 
 <body>
@@ -17,7 +15,7 @@
         <aside>
             <div class="top">
                 <div class="logo">
-                    <img src="./img/logo.png" alt="">
+                    <img src="./img/logo.png" alt="Logo">
                 </div>
                 <div class="close" id="close_btn">
                     <span class="material-symbols-sharp">close</span>
@@ -33,23 +31,22 @@
                     <span class="material-symbols-sharp">add_moderator</span>
                     <h3>Admin</h3>
                 </a>
-                <a href="usuario.html" class="active">
+                <a href="usuario.html">
                     <span class="material-symbols-sharp">person</span>
                     <h3>Usuários</h3>
                 </a>
                 <a href="users.html">
                     <span class="material-symbols-sharp">group</span>
                     <h3>Total Usuários</h3>
-                </a> 
+                </a>
                  <a href="comunidades.html">
                     <span class="material-symbols-sharp">public</span>
                     <h3>Comunidade</h3>
-                </a> 
-                <a href="denuncias.html">
-                    <span class="material-symbols-sharp">face</span>
-                    <h3>Denúncias</h3>
                 </a>
-
+                <a href="denuncias.html" class="active">
+                    <span class="material-symbols-sharp">face</span>
+                    <h3>Denuncias</h3>
+                </a>
                 <a href="engajamento.html">
                     <span class="material-symbols-sharp">query_stats</span>
                     <h3>Engajamento</h3>
@@ -66,46 +63,33 @@
         </aside>
         <!--end aside-->
         <main>
-            <h1>Usuários</h1>
-
-            <div class="search-container">
-                <div class="input-wrapper">
-                    <button id="search-btn">
-                        <i style="font-size: 17px;padding-right: 10px;">Buscar Usuario</i>
-                        <i class="fa fa-search"></i>
-                    </button>
-                </div>
-
-                <!-- Inputs ocultos para ID, Nome e Username -->
-                <div class="filters hidden" id="filters">
-                    <form id="searchForm" class="filters" >
-                        <input type="text" placeholder="ID" id="search-id" />
-                        <input type="text" placeholder="Nome" id="search-name" />
-                        <input type="text" placeholder="Username" id="search-username" />
-                        <button id="execute-search" type="submit">Pesquisar</button>
-                    </form>
-                </div>
-            </div>
-            <div id="listaUsuarios">
-                <div class="table-container" id="listaUsuarios"></div>
-
-                <div class="parceria-container" style="display: none;">
-                    <div class="parceria-info">
-                        <img src="imgUser"
-                            alt="Imagem da Parceria" class="parceria-image">
-                        <div class="parceria-details">
-                            <h2>Nome</h2>
-                            <small class="text-muted">Username</small>
+            <h1>Denuncias Respondidas</h1>
+            <button class="btnPendentes" type="button" onclick = "window.location.href = 'denuncias.html'">Denuncias Recebidas</button>
+            <button class="btnAceitos" type="button" onclick = "window.location.href = 'denunciasRespondidas.html'">Denuncias Respondidas</button>
+            <div class="div-denuncias">
+                    <div class="denuncia" onclick="abrirPaginaDenuncia()">
+                        <div class="fotoUsuario">
+                            <img src="" alt="Foto do Usuário">
                         </div>
-                        
+                        <div class="conteudoDenuncia">
+                            <div class="message">
+                                <p>Titulo Denuncia</p>
+                                <div class="numeroDenuncia">
+                                    <p>Numero da denuncia</p>
+                                </div>
+                            </div>
+                            <div class="nomeUserDenuncia">
+                                <p>Nome da pessoa que fez a denuncia</p>
+                            </div>
+                            <div class="statusResposta">
+                                <p>Se foi respondida ou nao</p>
+                            </div>
+                        </div>
                     </div>
-                  <div class="table-container" id="listaUsuarios"></div>
-
                 </div>
-            </div>
+              
         </main>
-        <!--end main-->
-        <div class="right">
+           <div class="right">
             <div class="top">
                 <button id="menu_btn">
                     <span class="material-symbols-sharp"> menu</span>
@@ -123,13 +107,14 @@
             </div>
         </div>
     </div>
-    <script type="module" src="./js/usuario.js"></script>
-    <script type="module" src="./js/moderacaoUsuario.js"></script>
-    <script type="text/javascript" src="./js/dashboard.js"></script>
-    <script type="text/javascript" src="./js/grafico.js"></script>
-    <script type="text/javascript" src="./js/card_dashboad.js"></script>
+    </div>
+    <script>
+        function abrirPaginaDenuncia() {
+            window.location.href = "responderDenuncia.html";
+        }
+    </script>
+    <script type="module" src="./js/moderacaoRespDenuncia.js"></script>
     <script type="text/javascript" src="./js/userData.js"></script>
-
    
 </body>
 

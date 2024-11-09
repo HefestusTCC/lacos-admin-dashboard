@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denuncias</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" />
+    <link rel="stylesheet" href="css/parceria_style.css">
+    <link rel="stylesheet" href="css/comunidades.css">
+</head>
+
+<body>
+    <div class="container">
+        <aside>
+            <div class="top">
+                <div class="logo">
+                    <img src="./img/logo.png" alt="Logo">
+                </div>
+                <div class="close" id="close_btn">
+                    <span class="material-symbols-sharp">close</span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <a href="dashboard.html">
+                    <span class="material-symbols-sharp">grid_view</span>
+                    <h3>Dashboard</h3>
+                </a>
+                <a href="admin.html">
+                    <span class="material-symbols-sharp">add_moderator</span>
+                    <h3>Admin</h3>
+                </a>
+                <a href="usuario.html">
+                    <span class="material-symbols-sharp">person</span>
+                    <h3>Usuários</h3>
+                </a>
+                <a href="users.html">
+                    <span class="material-symbols-sharp">group</span>
+                    <h3>Total Usuários</h3>
+                </a>
+                <a href="comunidades.html" class="active">
+                    <span class="material-symbols-sharp">public</span>
+                    <h3>Comunidade</h3>
+                </a>
+                <a href="denuncias.html">
+                    <span class="material-symbols-sharp">face</span>
+                    <h3>Denuncias</h3>
+                </a>
+                <a href="engajamento.html">
+                    <span class="material-symbols-sharp">query_stats</span>
+                    <h3>Engajamento</h3>
+                </a>
+                <a href="parcerias.html">
+                    <span class="material-symbols-sharp">storefront</span>
+                    <h3>Anunciantes</h3>
+                </a>
+                <a href="/">
+                    <span class="material-symbols-sharp">logout</span>
+                    <h3>Sair</h3>
+                </a>
+            </div>
+        </aside>
+        <!--end aside-->
+        <main>
+            <h1>Comunidades</h1>
+        
+          <div class="botoesOpcoes">
+    <button class="btnTotal" type="button" onclick="mostrarTotal()">Total</button>
+    <button class="btnPendentes" type="button" onclick="mostrarPendentes()">Pedidos Pendentes</button>
+    <button class="btnAceitos" type="button" onclick="mostrarAceitos()">Pedidos Aceitos</button>
+</div>
+
+<div id="conteudo" style="margin-top: 20px;">
+    <div class="pendente-container">
+                <p class="titulo">Todos os Pedidos</p>
+
+                <div class="comunidade">
+                   <div class="idPedido"> 
+                    <p>#id do pedido</p>
+                    </div>
+                   <div class="imgComunidade">
+                    <img src="./img/foto.png" alt="img da comunidade">
+                    </div>
+                    <div class="infoComunidade">
+                        <div class="nomeComunidade">
+                          <p class="nomeComunidades">Nome da comunidade</p>
+                          <p class="idComunidades">#Id da comunidade</p>
+                        </div>    
+                        <div class="nomeCriadorComunidade">  
+                            <p>Nome da pessoa que criou</p>    
+                        </div>
+                         <div class="emailCriadorComunidade">  
+                            <p>Email da pessoa que criou</p>    
+                        </div>
+                    </div>  
+                    <div class="dataDoPedido">
+                          <p>data de pedido de criacao da comunidade</p>    
+                    </div>
+                    <div class="statusPedido">
+                        <button class="btnAceitar"><img src="./img/accepted.png"></img></button>
+                        <button class="btnRecusar"><img class="imgRefuse" src="./img/refuse.png"></img></button>
+
+                    </div>
+
+                </div>
+                
+    
+        </div>
+
+         <div class="pendente-container">
+
+                <div class="comunidade">
+                   <div class="idPedido"> 
+                    <p>#id do pedido</p>
+                    </div>
+                   <div class="imgComunidade">
+                    <img src="./img/foto.png" alt="img da comunidade">
+                    </div>
+                    <div class="infoComunidade">
+                        <div class="nomeComunidade">
+                          <p class="nomeComunidades">Nome da comunidade</p>
+                          <p class="idComunidades">#Id da comunidade</p>
+                        </div>    
+                        <div class="nomeCriadorComunidade">  
+                            <p>Nome da pessoa que criou</p>    
+                        </div>
+                         <div class="emailCriadorComunidade">  
+                            <p>Email da pessoa que criou</p>    
+                        </div>
+                    </div>  
+                    <div class="dataDoPedido">
+                          <p>data de pedido de criacao da comunidade</p>    
+                    </div>
+                    <div class="statusPedido">
+                          <p>Pedido aceito</p>    
+
+                    </div>
+
+                </div>
+                
+    
+        </div>
+</div>
+
+<script>
+        function mostrarTotal() {
+        const conteudo = document.getElementById('conteudo');
+        conteudo.innerHTML = `
+            <div class="pendente-container">
+                <p class="titulo">Todos os Pedidos</p>
+
+                <div class="comunidade">
+                   <div class="idPedido"> 
+                    <p>#id do pedido</p>
+                    </div>
+                   <div class="imgComunidade">
+                    <img src="./img/foto.png" alt="img da comunidade">
+                    </div>
+                    <div class="infoComunidade">
+                        <div class="nomeComunidade">
+                          <p class="nomeComunidades">Nome da comunidade</p>
+                          <p class="idComunidades">#Id da comunidade</p>
+                        </div>    
+                        <div class="nomeCriadorComunidade">  
+                            <p>Nome da pessoa que criou</p>    
+                        </div>
+                         <div class="emailCriadorComunidade">  
+                            <p>Email da pessoa que criou</p>    
+                        </div>
+                    </div>  
+                    <div class="dataDoPedido">
+                          <p>data de pedido de criacao da comunidade</p>    
+                    </div>
+                    <div class="statusPedido">
+                        <button class="btnAceitar"><img src="./img/accepted.png"></img></button>
+                        <button class="btnRecusar"><img class="imgRefuse" src="./img/refuse.png"></img></button>
+
+                    </div>
+
+                </div>
+                
+    
+        </div>
+
+         <div class="pendente-container">
+
+                <div class="comunidade">
+                   <div class="idPedido"> 
+                    <p>#id do pedido</p>
+                    </div>
+                   <div class="imgComunidade">
+                    <img src="./img/foto.png" alt="img da comunidade">
+                    </div>
+                    <div class="infoComunidade">
+                        <div class="nomeComunidade">
+                          <p class="nomeComunidades">Nome da comunidade</p>
+                          <p class="idComunidades">#Id da comunidade</p>
+                        </div>    
+                        <div class="nomeCriadorComunidade">  
+                            <p>Nome da pessoa que criou</p>    
+                        </div>
+                         <div class="emailCriadorComunidade">  
+                            <p>Email da pessoa que criou</p>    
+                        </div>
+                    </div>  
+                    <div class="dataDoPedido">
+                          <p>data de pedido de criacao da comunidade</p>    
+                    </div>
+                    <div class="statusPedido">
+                          <p>Pedido aceito</p>    
+
+                    </div>
+
+                </div>
+                
+    
+        </div>
+    `;
+}
+    function mostrarPendentes() {
+        const conteudo = document.getElementById('conteudo');
+        conteudo.innerHTML = `
+            <div class="pendente-container">
+                <p class="titulo">Pedidos de Comunidade Pendentes</p>
+
+                <div class="comunidade">
+                   <div class="idPedido"> 
+                    <p>#id do pedido</p>
+                    </div>
+                   <div class="imgComunidade">
+                    <img src="./img/foto.png" alt="img da comunidade">
+                    </div>
+                    <div class="infoComunidade">
+                        <div class="nomeComunidade">
+                          <p class="nomeComunidades">Nome da comunidade</p>
+                          <p class="idComunidades">#Id da comunidade</p>
+                        </div>    
+                        <div class="nomeCriadorComunidade">  
+                            <p>Nome da pessoa que criou</p>    
+                        </div>
+                         <div class="emailCriadorComunidade">  
+                            <p>Email da pessoa que criou</p>    
+                        </div>
+                    </div>  
+                    <div class="dataDoPedido">
+                          <p>data de pedido de criacao da comunidade</p>    
+                    </div>
+                    <div class="statusPedido">
+                        <button class="btnAceitar"><img src="./img/accepted.png"></img></button>
+                        <button class="btnRecusar"><img class="imgRefuse" src="./img/refuse.png"></img></button>
+
+                    </div>
+
+                </div>
+                
+    
+        </div>
+    `;
+}
+        
+   function mostrarAceitos() {
+        const conteudo = document.getElementById('conteudo');
+        conteudo.innerHTML = `
+        <div class="pendente-container">
+                <p class="titulo">Pedidos de Comunidade Aceitos</p>
+
+                <div class="comunidade">
+                   <div class="idPedido"> 
+                    <p>#id do pedido</p>
+                    </div>
+                   <div class="imgComunidade">
+                    <img src="./img/foto.png" alt="img da comunidade">
+                    </div>
+                    <div class="infoComunidade">
+                        <div class="nomeComunidade">
+                          <p class="nomeComunidades">Nome da comunidade</p>
+                          <p class="idComunidades">#Id da comunidade</p>
+                        </div>    
+                        <div class="nomeCriadorComunidade">  
+                            <p>Nome da pessoa que criou</p>    
+                        </div>
+                         <div class="emailCriadorComunidade">  
+                            <p>Email da pessoa que criou</p>    
+                        </div>
+                    </div>  
+                    <div class="dataDoPedido">
+                          <p>data de pedido de criacao da comunidade</p>    
+                    </div>
+                    <div class="statusPedido">
+                          <p>Pedido aceito</p>    
+
+                    </div>
+
+                </div>
+                
+    
+        </div>
+        `;
+       
+    }
+</script>
+
+        </main>
+           <div class="right">
+            <div class="top">
+                <button id="menu_btn">
+                    <span class="material-symbols-sharp"> menu</span>
+                </button>
+               
+                <div class="profile">
+                    <div class="info">
+                        <p>Olá, <b id="adminName"></b></p>
+                        <small class="text-muted">Admin</small>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="" id="profilePicture" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script>
+        function abrirPaginaDenuncia() {
+            window.location.href = "responderDenuncia.html";
+        }
+    </script>
+    <script type="module" src="./js/comunidades.js"></script>
+    <script type="module" src="./js/moderacaoDenuncia.js"></script>
+    <script type="text/javascript" src="./js/userData.js"></script>
+   
+</body>
+
+</html>

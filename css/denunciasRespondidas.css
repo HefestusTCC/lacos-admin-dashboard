@@ -19,7 +19,7 @@
     font-weight: bold;
   }
   .containerDenuncias {
-      height: 280px;
+      height: 400px;
       width: 100%;
       background-color: #f5823b;
       border: 2px solid black;
@@ -42,9 +42,9 @@
       border-radius: 10px;
       cursor: pointer;
       display: flex;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
 
-      height: 70px;
+      height: 80px;
       border-radius: 10px;
       width: 100%;
       align-items: center;
@@ -54,6 +54,52 @@
       color: black;
   }
 
+.RespostaDenuncia{
+    border: 2px solid black;
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      margin-bottom: 5px;
+
+      height: 100px;
+      border-radius: 10px;
+      width: 100%;
+      align-items: center;
+      padding: 10px;
+      box-sizing: border-box;
+      background-color: #ffffff;
+      color: black;
+}
+
+.nomeUserDenunciaRespondida{
+    padding: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: left;
+    color: black;
+}
+
+.messageResposta{
+    font-size: 18px;
+      color: black;
+}
+
+button{
+    background-color: transparent;
+    padding: 10px;
+    
+    cursor: pointer;
+    font-size: 13px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+   
+
+
+.btnPendentes:hover,
+.btnAceitos:hover {
+background-color: #e96c18;
+color: aliceblue;
+}
   .descDenuncia {
       color: black;
       padding: 5px;
@@ -143,7 +189,6 @@
   }
 
   .message {
-      
       font-size: 14px;
       color: black;
   }
@@ -201,21 +246,3 @@
       padding-top: 7px;
       font-family: Arial, Helvetica, sans-serif;
   }
-
-  
-button{
-    background-color: transparent;
-    padding: 10px;
-    
-    cursor: pointer;
-    font-size: 13px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-   
-
-
-.btnPendentes:hover,
-.btnAceitos:hover {
-background-color: #e96c18;
-color: aliceblue;
-}
