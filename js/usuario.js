@@ -21,6 +21,7 @@ window.onclick = function (event) {
 
  searchBtn.addEventListener("click", () => {
    filters.classList.toggle("hidden");
+   
  });
 
  executeSearchBtn.addEventListener("click", () => {

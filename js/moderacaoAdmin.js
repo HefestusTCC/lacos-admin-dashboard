@@ -9,16 +9,16 @@ async function loadUsers() {
   $("#listaUsuarios").empty();
 
   const header = `
-    <table>
+    <table id="table">
         <tr style="background-color:#f5823b;">
-            <th style="width: 10%; border-radius:10px 0px 0px 10px;"></th>
-            <th style="width: 16%; text-align: center; vertical-align: middle;">Nome</th>
-            <th style="width: 15%; text-align: center; vertical-align: middle;">Usuário</th>
-            <th style="width: 26%; text-align: center; vertical-align: middle;">Email</th>
-            <th style="width: 10%; text-align: center; vertical-align: middle;">Nível</th>
-            <th style="width: 13%; text-align: center; vertical-align: middle;">Status</th>
-            <th style="width: 10%;"></th>
-            <th style="width: 10%; border-radius:0px 10px 10px 0px;"></th>
+            <th style=" border-radius:10px 0px 0px 10px;">ID</th>
+            <th style=" text-align: center; vertical-align: middle;"></th>
+            <th style=" text-align: center; vertical-align: middle;">Nome</th>
+            <th style=" text-align: center; vertical-align: middle;">Usuário</th>
+            <th style=" text-align: center; vertical-align: middle;">Email</th>
+            <th style=" text-align: center; vertical-align: middle;">Nível</th>
+            <th style=" text-align: center; vertical-align: middle;">Status</th>
+            <th style=" border-radius:0px 10px 10px 0px;"></th>
         </tr>
     </table>
 `;
@@ -33,10 +33,11 @@ async function loadUsers() {
     response.forEach(function (user) {
       let viewRole = "";
       user.roles.forEach((role) => {
-        viewRole = viewRole + role.role + " ";
+        viewRole = viewRole + role.role + "<br>";
       });
       const card = `
                         <tr>
+                            <td style="width: 16%;"><small class="text-muted">${user.id}</small></td>
                             <td style="width: 10%; text-align:center; border-radius: 10px 0px 0px 0px;"><img src="${user.profilePictureURL}" alt="Imagem do Usuário" class="parceria-image" style="display: block; margin: 0 auto;"></td>
                             <td style="width: 16%;"><small class="text-muted">${user.name}</small></td>
                             <td style="width: 15%;"><small class="text-muted">${user.username}</small></td>
@@ -47,7 +48,7 @@ async function loadUsers() {
                             <td style="border-radius:0px 10px 10px 0px;"><button style="width: 100%; z-index: 99;" type="button"></button></td>
                         </tr>
                             `;
-      $("#listaUsuarios").append(card);
+      $("#table").append(card);
 
       assignButtonEvents();
     });
@@ -71,22 +72,42 @@ $("#searchForm").on("submit", async function (event) {
   let responseData = await getUsers(url);
   let response = responseData.data;
   $("#listaUsuarios").empty();
+  
+  const header = `
+  <table id="table">
+      <tr style="background-color:#f5823b;">
+          <th style=" border-radius:10px 0px 0px 10px;">ID</th>
+          <th style=" text-align: center; vertical-align: middle;"></th>
+          <th style=" text-align: center; vertical-align: middle;">Nome</th>
+          <th style=" text-align: center; vertical-align: middle;">Usuário</th>
+          <th style=" text-align: center; vertical-align: middle;">Email</th>
+          <th style=" text-align: center; vertical-align: middle;">Nível</th>
+          <th style=" text-align: center; vertical-align: middle;">Status</th>
+          <th style=" border-radius:0px 10px 10px 0px;"></th>
+      </tr>
+  </table>
+`;
+$("#listaUsuarios").append(header);
   if (response.length > 0) {
     response.forEach(function (user) {
+      let viewRole = "";
+      user.roles.forEach((role) => {
+        viewRole = viewRole + role.role + "<br>";
+      });
       const card = `
                         <tr>
-                            <td style="width: 10%;"><img src="${user.profilePictureURL}" alt="Imagem do Usuário" class="parceria-image"></td>
-                            <td style="width: 20%;"><small class="text-muted">${user.name}</small></td>
-                            <td style="width: 15%;"><small class="text-muted">${user.username}</small></td>
-                            <td style="width: 25%;"><small class="text-muted">${user.email}</small></td>
-                            <td style="width: 10%;"><small class="text-muted">${user.level}</small></td>
-                            <td style="width: 10%;"><small class="text-muted">${user.status}</small></td>
-                            <td>
-                                <button style="width: 100%; z-index: 99;" type="button" class="demoteButton" data-id="${user.id}"><a style="width: 100%; z-index: 99;">Remover Admin</a></button>
-                            </td>
-                        </tr> 
+                            <td "><small class="text-muted">${user.id}</small></td>
+                            <td  text-align:center; border-radius: 10px 0px 0px 0px;"><img src="${user.profilePictureURL}" alt="Imagem do Usuário" class="parceria-image" style="display: block; margin: 0 auto;"></td>
+                            <td "><small class="text-muted">${user.name}</small></td>
+                            <td ><small class="text-muted">${user.username}</small></td>
+                            <td "><small class="text-muted">${user.email}</small></td>
+                            <td "><small class="text-muted">${viewRole}</small></td>
+                            <td ><small class="text-muted">${user.status}</small></td>
+                            <td style="cursor:pointer;"><button style="width: 100%; border-radius: 0px 10px 10px 0px; cursor:pointer; z-index: 99;" type="button" class="demoteButton" data-id="${user.id}"><a style="width: 100%; z-index: 99; cursor:pointer;"><img class="imgButtons" style="width: 23px;"; cursor:pointer;" src="./img/banirUsuario.png" alt="remover admin">Remover Admin</a></button></td>
+                            <td style="border-radius:0px 10px 10px 0px;"><button style="width: 100%; z-index: 99;" type="button"></button></td>
+                        </tr>
                             `;
-      $("#listaUsuarios").append(card);
+      $("#table").append(card);
     });
     assignButtonEvents();
 

@@ -9,20 +9,23 @@ async function loadUsers() {
   $("#listaUsuarios").empty();
 
   const header = `
-        <div class="table-container">
-            <table>
+            <table id="table">
                 <thead>
                     <tr style="background-color:#f5823b;">
-                        <th style="width: 6%; border-radius: 10px 0px 0px 10px"></th>
-                        <th style="width: 9%;">Nome</th>
-                        <th style="width: 15%;">Usuário</th>
-                        <th style="width: 21%;">Email</th>
-                        <th style="width: 10%;">Nível</th>
-                        <th style="width: 10%;">Status</th>
-                        <th style="width: 35%; border-radius: 0px 10px 10px 0px"></th>
+                        <th style=" border-radius: 10px 0px 0px 10px">ID</th>
+                        <th></th>
+                        <th style="">Nome</th>
+                        <th style="">Usuário</th>
+                        <th style="">Email</th>
+                        <th style="">Nível</th>
+                        <th style="">Status</th>
+                        <th style=""> </th>
+                        <th style=""> </th>
+                        <th style=""> </th>
+                        <th style=""> </th>
+
                     </tr>
                 </thead>
-                <tbody>
     `;
 
   // Insere o cabeçalho no HTML
@@ -34,6 +37,7 @@ async function loadUsers() {
       let viewRole = user.roles.map((role) => role.role).join("<br>");
       const row = `
                 <tr>
+                  <td><small class="text-muted">${user.id}</small></td>
                     <td style="text-align:center;">
                         <img src="${user.profilePictureURL}" alt="Imagem do Usuário" class="parceria-image">
                     </td>
@@ -43,9 +47,7 @@ async function loadUsers() {
                     <td><small class="text-muted">${viewRole}</small></td>
                     <td><small class="text-muted">${user.status}</small></td>
                      <td style="text-align: center;"><button type="button" class="promoteButton" data-id="${user.id}"><img src="./img/tornarAdmin.png" class="img-promote"> Tornar Admin</button></td>
-                  
-</td>
-<td style="text-align: center;">
+<td>
     <button class="banUser" data-id="${user.id}">
     <div class="imgButtons">
       <img src="./img/banirUsuario.png" class="img-ban">
@@ -53,7 +55,7 @@ async function loadUsers() {
       </div>
     </button>
 </td>
-<td style="text-align: center;">
+<td >
     <button type="button" class="demoteButton" data-id="${user.id}">
       <div class="imgButtons">
       <img src="./img/desbanir.png" class="img-demote"> 
@@ -61,22 +63,21 @@ async function loadUsers() {
       </div>
     </button>
 </td>
-<td style="text-align: center;">
+<td>
     <button class="deleteUser" data-id="${user.id}">
-        <img src="./img/remover.png" class="img-delete"> 
-        Apagar Usuário
+        <div class="imgButtons">
+          <img src="./img/remover.png" class="img-delete"> 
+          Apagar Usuário
+        </div>
     </button>
 </td>
 
                 </tr>
             `;
-      $("#listaUsuarios").append(row);
+      $("#table").append(row);
       assignButtonEvents();
     });
   }
-
-  // Fecha a tabela
-  $("#listaUsuarios").append(`</tbody></table></div>`);
 }
 
 
@@ -95,56 +96,72 @@ $('#searchForm').on('submit', async function (event) {
   if (username) url += `username=${encodeURIComponent(username)}&`;
   if (id) url += `id=${encodeURIComponent(id)}&`;
   let response = await getUsers(url);
-  $('#listaUsuarios').empty();
-
+  $("#listaUsuarios").empty();
   const header = `
-    <table>
-        <tr style="background-color:#ff7a28b0;">
-            <th style="width: 6%; border-radius:10px 0px 0px 10px; text-align:left;"></th>
-            <th style="width: 20%;">Nome</th>
-            <th style="width: 13%;">Usuário</th>
-            <th style="width: 21%;">Email</th>
-            <th style="width: 7%;">Nível</th>
-            <th style="width: 8%;">Status</th>
-            <th style="width: 40%; border-radius:0px 10px 10px 0px;"></th>
-        
-        </tr>
-    </table>
-`;
+            <table id="table">
+                <thead>
+                    <tr style="background-color:#f5823b;">
+                        <th style=" border-radius: 10px 0px 0px 10px">ID</th>
+                        <th></th>
+                        <th style="">Nome</th>
+                        <th style="">Usuário</th>
+                        <th style="">Email</th>
+                        <th style="">Nível</th>
+                        <th style="">Status</th>
+                        <th style=""> </th>
+                        <th style=""> </th>
+                        <th style=""> </th>
+                        <th style=""> </th>
 
+                    </tr>
+                </thead>
+    `;
 
   $("#listaUsuarios").append(header);
-
-
   if (response.length > 0) {
     response.forEach(function (user) {
-      console.log(user)
-      let viewRole = "";
-      user.roles.forEach((role) => {
-        viewRole = viewRole + role.role + "<br>";
-      });
-      const card = `
-             <tr>
-                            <td style="width: 5%;"><img src="${user.profilePictureURL}" alt="Imagem do Usuário" class="parceria-image"></td>
-                            <td style="width: 20%;"><small class="text-muted">${user.name}</small></td>
-                            <td style="width: 15%;"><small class="text-muted">${user.username}</small></td>
-                            <td style="width: 25%;"><small class="text-muted">${user.email}</small></td>
-                            <td style="width: 10%;"><small class="text-muted">${viewRole}</small></td>
-                            <td style="width: 10%;"><small class="text-muted">${user.status}</small></td>
-                            <td><button style="width: 100%; z-index: 99;" type="button" class="promoteButton" data-id="${user.id}"><a style="width: 100%; z-index: 99;">Tornar Admin</a></button></td>
-                            <td><button style="width: 100%; z-index: 99;" type="button" class="banUser" data-id="${user.id}"><a style="width: 100%; z-index: 99;">Banir Usuário</a></button></td>
-                            <td><button style="width: 100%; z-index: 99;" type="button" class="demoteButton" data-id="${user.id}"><a style="width: 100%; z-index: 99;">Desbanir Usuário</a></button></td>
-                            <td><button style="width: 100%; cursor:pointer; z-index: 99;" type="button" class="deleteUser" data-id="${user.id}"><a style="width: 100%; z-index: 99;">Apagar Usuário</a></button></td>
-                            
-                            
-                            
-                        </tr>
-                            `;
-      $('#listaUsuarios').append(card);
-    });
-    assignButtonEvents();
-    $(".dropdown-btn").on("click", function () {
-      $(this).next(".dropdown-content").toggleClass("show");
+      let viewRole = user.roles.map((role) => role.role).join("<br>");
+      const row = `
+                <tr>
+                  <td><small class="text-muted">${user.id}</small></td>
+                    <td style="text-align:center;">
+                        <img src="${user.profilePictureURL}" alt="Imagem do Usuário" class="parceria-image">
+                    </td>
+                    <td><small class="text-muted">${user.name}</small></td>
+                    <td><small class="text-muted">${user.username}</small></td>
+                    <td><small class="text-muted">${user.email}</small></td>
+                    <td><small class="text-muted">${viewRole}</small></td>
+                    <td><small class="text-muted">${user.status}</small></td>
+                     <td style="text-align: center;"><button type="button" class="promoteButton" data-id="${user.id}"><img src="./img/tornarAdmin.png" class="img-promote"> Tornar Admin</button></td>
+<td>
+    <button class="banUser" data-id="${user.id}">
+    <div class="imgButtons">
+      <img src="./img/banirUsuario.png" class="img-ban">
+      Banir Usuário
+      </div>
+    </button>
+</td>
+<td >
+    <button type="button" class="demoteButton" data-id="${user.id}">
+      <div class="imgButtons">
+      <img src="./img/desbanir.png" class="img-demote"> 
+      Desbanir Usuário    
+      </div>
+    </button>
+</td>
+<td>
+    <button class="deleteUser" data-id="${user.id}">
+        <div class="imgButtons">
+          <img src="./img/remover.png" class="img-delete"> 
+          Apagar Usuário
+        </div>
+    </button>
+</td>
+
+                </tr>
+            `;
+      $("#table").append(row);
+      assignButtonEvents();
     });
   } else {
     $('#listaUsuarios').html('<p>Nenhum usuário encontrado.</p>');
@@ -210,10 +227,26 @@ async function buttonActions(url) {
 
   function toggleDarkMode(isDarkModeEnabled) {
     if (isDarkModeEnabled) {
-        document.body.classList.add('dark-mode');
+      document.body.classList.add('dark-mode');
     } else {
-        document.body.classList.remove('dark-mode');
+      document.body.classList.remove('dark-mode');
     }
-}
+  }
 
 }
+
+$(document).on("click", ".dropdown-btn", function () {
+  $(this).next(".dropdown-content").toggleClass("show");
+});
+
+window.onclick = function (event) {
+  if (!event.target.matches(".dropdown-btn")) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    for (var i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains("show")) {
+        openDropdown.classList.remove("show");
+      }
+    }
+  }
+};

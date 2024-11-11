@@ -405,7 +405,7 @@ main .posts #chart_div {
     align-items: center;
     height: 1.6rem;
     width: 4.2rem;
-    cursor: pointer;
+
     border-radius: var(--border-radius-1);
 }
 

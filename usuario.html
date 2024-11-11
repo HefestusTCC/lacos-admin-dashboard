@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuários</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" />
+
     <link rel="stylesheet" href="css/usuario_style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -40,11 +41,11 @@
                 <a href="users.html">
                     <span class="material-symbols-sharp">group</span>
                     <h3>Total Usuários</h3>
-                </a> 
-                 <a href="comunidades.html">
+                </a>
+                <a href="comunidades.html">
                     <span class="material-symbols-sharp">public</span>
                     <h3>Comunidade</h3>
-                </a> 
+                </a>
                 <a href="denuncias.html">
                     <span class="material-symbols-sharp">face</span>
                     <h3>Denúncias</h3>
@@ -78,7 +79,7 @@
 
                 <!-- Inputs ocultos para ID, Nome e Username -->
                 <div class="filters hidden" id="filters">
-                    <form id="searchForm" class="filters" >
+                    <form id="searchForm" class="filters">
                         <input type="text" placeholder="ID" id="search-id" />
                         <input type="text" placeholder="Nome" id="search-name" />
                         <input type="text" placeholder="Username" id="search-username" />
@@ -91,15 +92,14 @@
 
                 <div class="parceria-container" style="display: none;">
                     <div class="parceria-info">
-                        <img src="imgUser"
-                            alt="Imagem da Parceria" class="parceria-image">
+                        <img src="imgUser" alt="Imagem da Parceria" class="parceria-image">
                         <div class="parceria-details">
                             <h2>Nome</h2>
                             <small class="text-muted">Username</small>
                         </div>
-                        
+
                     </div>
-                  <div class="table-container" id="listaUsuarios"></div>
+                    <div class="table-container" id="listaUsuarios"></div>
 
                 </div>
             </div>
@@ -110,7 +110,6 @@
                 <button id="menu_btn">
                     <span class="material-symbols-sharp"> menu</span>
                 </button>
-               
                 <div class="profile">
                     <div class="info">
                         <p>Olá, <b id="adminName"></b></p>
@@ -123,14 +122,32 @@
             </div>
         </div>
     </div>
-    <script type="module" src="./js/usuario.js"></script>
-    <script type="module" src="./js/moderacaoUsuario.js"></script>
     <script type="text/javascript" src="./js/dashboard.js"></script>
     <script type="text/javascript" src="./js/grafico.js"></script>
     <script type="text/javascript" src="./js/card_dashboad.js"></script>
-    <script type="text/javascript" src="./js/userData.js"></script>
+    <script type="module" src="./js/userData.js"></script>
+    <script type="module" src="./js/usuario.js"></script>
+    <script type="module" src="./js/moderacaoUsuario.js"></script>
+    <script>
+        const searchBtn = document.getElementById("search-btn");
+        const filters = document.getElementById("filters");
+        const executeSearchBtn = document.getElementById("execute-search");
 
-   
+        searchBtn.addEventListener("click", () => {
+            filters.classList.toggle("hidden");
+
+        });
+
+        executeSearchBtn.addEventListener("click", () => {
+            const id = document.getElementById("search-id").value;
+            const name = document.getElementById("search-name").value;
+            const username = document.getElementById("search-username").value;
+
+            // Aqui você pode integrar com sua API para buscar usuários com base nos valores
+            console.log("Buscando usuário com:", { id, name, username });
+        });
+    </script>
+
 </body>
 
 </html>
