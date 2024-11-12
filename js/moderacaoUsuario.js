@@ -180,8 +180,8 @@ function assignButtonEvents() {
   // Apagar usuário
   $(".deleteUser").on("click", async function () {
     const userId = $(this).data("id");
-    let data = await buttonActions(`/admin/users/${userId}/delete`);
-    if (data.status == 200) {
+    let data = await deleteButton(`/admin/users/${userId}`);
+    if (data == 204) {
       location.reload();
     }
   });
@@ -232,7 +232,24 @@ async function buttonActions(url) {
       document.body.classList.remove('dark-mode');
     }
   }
+}
+async function deleteButton(url) {
+  try {
+    const response = await genericFetch(`${url}`, {}, "DELETE");
+    const data = response.status;
+    console.log(data)
+    return data;
+  } catch (error) {
+    console.error("Erro ao buscar dados do usuário:", error);
+  }
 
+  function toggleDarkMode(isDarkModeEnabled) {
+    if (isDarkModeEnabled) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  }
 }
 
 $(document).on("click", ".dropdown-btn", function () {
