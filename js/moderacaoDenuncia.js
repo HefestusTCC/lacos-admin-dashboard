@@ -38,6 +38,7 @@ async function loadDenuncias() {
           </div>
                 <div class="message">
                   <div>${denuncia.message}</div>
+                  
                 </div>
               </div>
               <div class="responderBtn">
@@ -52,6 +53,7 @@ async function loadDenuncias() {
                   <img src="${denuncia.post.author.profilePictureURL}"></img>
                 </div>
                   <div class="conteudoDenuncia">
+                
                 <div class="nomeAutorPost">${denuncia.post.author.name}</div> 
 
                 <div class"userAutorPost">@${

@@ -761,3 +761,185 @@ th {
     justify-content: center;
     align-items: center;
 }
+
+
+.card-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.card-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-content h2 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.card-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.btn-confirm {
+    background: #f5823b;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-cancel {
+    background: #ccc;
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-confirm:hover {
+    background: #e76a1d;
+}
+
+.btn-cancel:hover {
+    background: #bbb;
+}
+
+.card-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.card-content {
+    position: relative;
+    /* Necessário para posicionar o botão "X" dentro */
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    /* Largura responsiva */
+    max-width: 400px;
+    /* Tamanho máximo do card */
+}
+
+.close-card {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #333;
+}
+
+.close-card:hover {
+    color: #f5823b;
+}
+
+.card-content h2 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.card-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.btn-confirm {
+    background: #f5823b;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-cancel {
+    background: #ccc;
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-confirm:hover {
+    background: #e76a1d;
+}
+
+.btn-cancel:hover {
+    background: #bbb;
+}
+
+.feedback-message {
+    margin-top: 15px;
+    text-align: left;
+}
+
+.feedback-dropdown {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.custom-message {
+    margin-top: 10px;
+    font-style: italic;
+    color: #555;
+}
+
+.btn-feedback{
+    width: 100px;
+    font-size: 10px;
+}
+
+.btn-send-feedback {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #f5823b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: none;
+    /* Inicialmente escondido */
+}
+
+.btn-send-feedback:hover {
+    background-color: #e56b2d;
+}

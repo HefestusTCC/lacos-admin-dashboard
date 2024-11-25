@@ -17,6 +17,7 @@ if (denuncia.post != null) {
           <div class="idDenuncia">
           <p class="idDenuncias">#${denuncia.id}</p>
           </div>
+          
             <div class="fotoUsuario">
               <img src="${
                 denuncia.author.profilePictureURL
@@ -35,9 +36,12 @@ if (denuncia.post != null) {
                
                  <div class="postDenunciado">
                  <div class = "userDenunciado">
+                 
                   <div class="fotoUsuario">
                   <img src="${denuncia.post.author.profilePictureURL}"></img>
+                  
                 </div>
+                
                   <div class="conteudoDenuncia">
                 <div class="nomeAutorPost">${denuncia.post.author.name}</div> 
 
@@ -45,6 +49,12 @@ if (denuncia.post != null) {
                   denuncia.post.author.username
                 }</div>
                 </div>
+      <div class="apagarDenuncia">
+  <img src="./img/remover.png" alt="Remover Post" class="removeIcon">
+</div>
+
+
+
                 </div>
                 <p class="descDenuncia">${denuncia.post.content}</p>
                 ${
@@ -129,7 +139,7 @@ if (denuncia.comment != null) {
   denunciaContainer.innerHTML += denunciaElement;
 }
 
-// Quando você ajustar o estilo da denuncias, só colar os dois ifs no lugar dos IFs acima
+
 
 async function responder() {
   const assunto = document.getElementById("assunto").value;
@@ -165,3 +175,69 @@ document
   .addEventListener("click", async function () {
     responder();
   });
+
+document.querySelectorAll(".apagarDenuncia").forEach((container) => {
+  const removeIcon = container.querySelector(".removeIcon");
+
+  removeIcon.addEventListener("click", (event) => {
+    
+    event.stopPropagation();
+
+    
+    const confirmationCard = document.createElement("div");
+    confirmationCard.classList.add("confirmationCard");
+    confirmationCard.innerHTML = `
+      <p class= "pNome">Tem certeza que deseja apagar o post?</p>
+      <button class="yesBtn">Sim</button>
+      <button class="noBtn">Não</button>
+    `;
+    document.body.appendChild(confirmationCard);
+
+    
+    confirmationCard.style.display = "block";
+
+    
+    confirmationCard.querySelector(".yesBtn").addEventListener("click", async () => {
+      alert("Post apagado com sucesso.");
+      const postId = container.closest(".denuncia").dataset.id;
+
+        try {
+        await deletePost(postId); 
+        confirmationCard.remove(); 
+        container.closest(".denuncia").remove(); 
+        
+      } catch (error) {
+        console.error("Erro ao apagar post:", error);
+        alert("Não foi possível apagar o post. Tente novamente.");
+      }
+    });
+
+      confirmationCard.querySelector(".noBtn").addEventListener("click", () => {
+        confirmationCard.remove(); 
+
+        
+      });
+
+    
+    confirmationCard.querySelector(".noBtn").addEventListener("click", () => {
+      confirmationCard.remove(); 
+    });
+  });
+});
+
+async function deletePost(postId) {
+  try {
+    const response = await apiFetch(`/posts/${postId}`, {
+      method: "DELETE",
+    });
+
+    if (response.ok) {
+      console.log("Post deletado com sucesso");
+    } else {
+      throw new Error("Erro ao deletar o post no servidor.");
+    }
+  } catch (error) {
+    console.error("Erro ao deletar o post:", error);
+    throw error; 
+  }
+}

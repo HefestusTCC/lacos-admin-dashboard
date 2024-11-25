@@ -418,3 +418,61 @@ height: 40px;
 .btnVoltar a{
   color: #ffffff;
 }
+
+.apagarDenuncia {
+  position: relative;
+}
+
+.removeIcon {
+  width: 30px;
+  /* Tamanho da imagem de remover */
+  cursor: pointer;
+  /* O cursor vira o ponteiro ao passar o mouse */
+}
+
+.confirmationCard {
+  display: none;
+  
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  text-align: center;
+  z-index: 1000;
+  
+}
+
+.confirmationCard button {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.confirmationCard .yesBtn {
+  padding-bottom: 25px;
+  background-color: #4CAF50;
+  height: 30px;
+  color: white;
+}
+
+.confirmationCard .noBtn {
+  padding-bottom: 25px;
+
+  background-color: #f44336;
+  
+  height: 30px;
+  color: white;
+}
+
+
+
+.pNome{
+  font-size: 15px;
+  color: #000;
+}
