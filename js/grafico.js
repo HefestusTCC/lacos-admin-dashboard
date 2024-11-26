@@ -13,6 +13,9 @@ async function drawChart() {
   now = new Date(now.getFullYear(), now.getMonth(), 1)
   let lastMonth= new Date(now.getFullYear(), now.getMonth() - 1, 1);
   let lastTwoMonth= new Date(now.getFullYear(), now.getMonth() - 2, 1);
+  let nowMonthName = obterNomeMes(now);
+  let lastMonthName = obterNomeMes(lastMonth);
+  let lastTwoMonthName = obterNomeMes(lastTwoMonth);
   now = now.toISOString().split('.')[0];
   lastMonth = lastMonth.toISOString().split('.')[0];
   lastTwoMonth = lastTwoMonth.toISOString().split('.')[0];
@@ -22,9 +25,9 @@ async function drawChart() {
   console.log(newUserSinceToday + " " + newUserSinceLastMonth + " " + newUserSinceLastTwoMonth);
   var data = google.visualization.arrayToDataTable([
     ["Mês", "Usuários Totais"],
-    [" ", newUserSinceLastTwoMonth - newUserSinceToday],
-    [" ", newUserSinceLastMonth - newUserSinceToday],
-    [" ", newUserSinceToday],
+    [lastTwoMonthName, newUserSinceLastTwoMonth - (newUserSinceToday)],
+    [lastMonthName, newUserSinceLastMonth - newUserSinceLastTwoMonth],
+    [nowMonthName, newUserSinceToday],
   ]);
 
   var options = {

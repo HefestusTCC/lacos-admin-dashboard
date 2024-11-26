@@ -7,6 +7,92 @@ window.onload = function () {
 
 var message;
 
+$('#searchForm').on('submit', async function (event) {
+  event.preventDefault();
+  const name = $('#search-name').val();
+  const username = $('#search-username').val();
+  const id = $('#search-id').val();
+
+  if (!name && !username && !id) {
+    loadUsers();
+    return;
+  }
+  let url = `/admin/users/search?`;
+  if (name) url += `name=${encodeURIComponent(name)}&`;
+  if (username) url += `username=${encodeURIComponent(username)}&`;
+  if (id) url += `id=${encodeURIComponent(id)}&`;
+  let response = await getUsers(url);
+  $("#listaUsuarios").empty();
+  const header = `
+            <table id="table">
+                <thead>
+                    <tr style="background-color:#f5823b;">
+                        <th style=" border-radius: 10px 0px 0px 10px">ID</th>
+                        <th></th>
+                        <th style="">Nome</th>
+                        <th style="">Usuário</th>
+                        <th style="">Email</th>
+                        <th style="">Nível</th>
+                        <th style="">Status</th>
+                        <th style=""> </th>
+                        <th style=""> </th>
+                        <th style=""> </th>
+                        <th style=""> </th>
+
+                    </tr>
+                </thead>
+    `;
+
+  $("#listaUsuarios").append(header);
+  if (response.length > 0) {
+    response.forEach(function (user) {
+      let viewRole = user.roles.map((role) => role.role).join("<br>");
+      const row = `
+      <tr>
+        <td><small class="text-muted">${user.id}</small></td>
+        <td style="text-align:center;">
+          <img src="${user.profilePictureURL}" alt="Imagem do Usuário" class="parceria-image">
+        </td>
+        <td><small class="text-muted">${user.name}</small></td>
+        <td><small class="text-muted">${user.username}</small></td>
+        <td><small class="text-muted">${user.email}</small></td>
+        <td><small class="text-muted">${viewRole}</small></td>
+        <td><small class="text-muted">${user.status}</small></td>
+        <td style="text-align: center;">
+          <button type="button" class="promoteButton" data-id="${user.id}">
+            <img src="./img/tornarAdmin.png" class="img-promote"> Tornar Admin
+          </button>
+        </td>
+        <td>
+          <button class="banUser" data-id="${user.id}">
+            <div class="imgButtons">
+              <img src="./img/banirUsuario.png" class="img-ban"> Banir Usuário
+            </div>
+          </button>
+        </td>
+        <td>
+          <button type="button" class="demoteButton" data-id="${user.id}">
+            <div class="imgButtons">
+              <img src="./img/desbanir.png" class="img-demote"> Desbanir Usuário
+            </div>
+          </button>
+        </td>
+        <td>
+          <button class="deleteUser" data-id="${user.id}">
+            <div class="imgButtons">
+              <img src="./img/remover.png" class="img-delete"> Apagar Usuário
+            </div>
+          </button>
+        </td>
+      </tr>`;
+      $("#table").append(row);
+      assignButtonEvents();
+    });
+  } else {
+    $('#listaUsuarios').html('<p>Nenhum usuário encontrado.</p>');
+  }
+})
+
 async function loadUsers() {
   $("#listaUsuarios").empty();
 
@@ -212,6 +298,8 @@ function handleBanUser(userId) {
     });
   });
 
+
+
   // Enviar feedback e banir o usuário
   $("#sendFeedback").on("click", async function () {
     // Obter o feedback baseado no tipo escolhido
@@ -226,19 +314,6 @@ function handleBanUser(userId) {
   });
 }
 
-// Função para enviar o feedback (exemplo de envio, você pode adaptá-la)
-async function sendFeedback(userId, feedbackMessage) {
-  try {
-    const response = await genericFetch(`/admin/feedback/${userId}`, {
-      method: "POST",
-      body: JSON.stringify({ message: feedbackMessage }),
-      headers: { "Content-Type": "application/json" },
-    });
-    console.log("Feedback enviado:", response);
-  } catch (error) {
-    console.error("Erro ao enviar feedback:", error);
-  }
-}
 
 // Função para banir o usuário
 async function banUser(userId, reason) {

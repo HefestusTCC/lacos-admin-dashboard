@@ -22,9 +22,9 @@ async function drawChart() {
     console.log(reports)
     var data = google.visualization.arrayToDataTable([
         ['Mês', 'Posts'],
-        [obterNomeMes(doisMesesAtras), reports[0]+1],
-        [obterNomeMes(umMesAtras), reports[1]+2],
-        [obterNomeMes(dataAtual), reports[2]+3],
+        [obterNomeMes(doisMesesAtras), reports[0]],
+        [obterNomeMes(umMesAtras), reports[1]],
+        [obterNomeMes(dataAtual), reports[2]],
     ]);
 
     var options = {

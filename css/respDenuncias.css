@@ -18,6 +18,20 @@
 
   }
 
+  btnEnviarEExcluir .denuncia {
+    cursor: pointer;
+    display: flex;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    height: 200px;
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+
+  }
+
   .fotoUsuario img {
     width: 60px;
     height: 60px;
@@ -162,6 +176,24 @@
   }
 
     .btnEnviar {
+      background-color: #e96c18;
+      color: rgb(255, 255, 255);
+      border: none;
+      margin-top: 20px;
+      margin-left: auto;
+      margin-right: auto;
+  
+      cursor: pointer;
+      border-radius: 10px;
+      height: 40px;
+      width: 100px;
+      font-size: 15px;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      display: block;
+    
+    }
+
+    .btnEnviarEExcluir {
       background-color: #e96c18;
       color: rgb(255, 255, 255);
       border: none;

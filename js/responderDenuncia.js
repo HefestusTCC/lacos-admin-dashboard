@@ -3,6 +3,7 @@ import genericFetch from "./genericApi.js";
 
 const denunciaId = sessionStorage.getItem("denunciaId");
 const denuncia = JSON.parse(sessionStorage.getItem("denuncia"));
+const postId = denuncia.post.id;
 const denunciaContainer = document.querySelector(".div-denuncias");
 
 if (denuncia.post != null) {
@@ -19,9 +20,8 @@ if (denuncia.post != null) {
           </div>
           
             <div class="fotoUsuario">
-              <img src="${
-                denuncia.author.profilePictureURL
-              }" alt="Foto do Usuário">
+              <img src="${denuncia.author.profilePictureURL
+    }" alt="Foto do Usuário">
             </div>
             <div class="conteudoDenuncia">
                <div class="nomeUserDenuncia">
@@ -45,23 +45,18 @@ if (denuncia.post != null) {
                   <div class="conteudoDenuncia">
                 <div class="nomeAutorPost">${denuncia.post.author.name}</div> 
 
-                <div class"userAutorPost">@${
-                  denuncia.post.author.username
-                }</div>
+                <div class"userAutorPost">@${denuncia.post.author.username
+    }</div>
                 </div>
-      <div class="apagarDenuncia">
-  <img src="./img/remover.png" alt="Remover Post" class="removeIcon">
-</div>
 
 
 
                 </div>
                 <p class="descDenuncia">${denuncia.post.content}</p>
-                ${
-                  denuncia.post.image != null
-                    ? `<img class="imgDenunciada" src=\"${denuncia.post.image}\"></img>`
-                    : ""
-                }
+                ${denuncia.post.image != null
+      ? `<img class="imgDenunciada" src=\"${denuncia.post.image}\"></img>`
+      : ""
+    }
                 <img src=""></img>
                 
                 </div>
@@ -79,7 +74,10 @@ if (denuncia.post != null) {
                     <label for="mensagem">Mensagem:</label><br>
                     <textarea id="mensagem" name="mensagem" rows="4" required></textarea><br><br>
 
-                    <button type="button" class="btnEnviar">Enviar</button>
+                    <div style="display: flex; flex-direction: row;">
+                      <button type="button" class="btnEnviar">Enviar</button>
+                      <button type="button" class="btnEnviarEExcluir" style="background-color: red;">Enviar E Excluir Post </button>
+                    </div>
                 </form>
             </div>
           </div>
@@ -93,9 +91,8 @@ if (denuncia.comment != null) {
   const denunciaElement = `
           <div class="denuncia" data-id="${denuncia.id}">
             <div class="fotoUsuario">
-              <img src="${
-                denuncia.author.profilePictureURL
-              }" alt="Foto do Usuário">
+              <img src="${denuncia.author.profilePictureURL
+    }" alt="Foto do Usuário">
             </div>
             <div class="conteudoDenuncia">
             
@@ -114,21 +111,18 @@ if (denuncia.comment != null) {
                   <img src="${denuncia.comment.author.profilePictureURL}"></img>
                 </div>
                   <div class="conteudoDenuncia">
-                <div class="nomeAutorPost">${
-                  denuncia.comment.author.name
-                }</div> 
+                <div class="nomeAutorPost">${denuncia.comment.author.name
+    }</div> 
 
-                <div class"userAutorPost">@${
-                  denuncia.comment.author.username
-                }</div>
+                <div class"userAutorPost">@${denuncia.comment.author.username
+    }</div>
                 </div>
                 </div>
                 <p class="descDenuncia">${denuncia.comment.content}</p>
-                ${
-                  denuncia.comment.image != null
-                    ? `<img class="imgDenunciada" src=\"${denuncia.comment.image}\"></img>`
-                    : ""
-                }
+                ${denuncia.comment.image != null
+      ? `<img class="imgDenunciada" src=\"${denuncia.comment.image}\"></img>`
+      : ""
+    }
                 <img src=""></img>
                 
                 </div>
@@ -170,20 +164,62 @@ async function responder() {
   }
 }
 
+async function responderAndExcluir() {
+  const assunto = document.getElementById("assunto").value;
+  const mensagem = document.getElementById("mensagem").value;
+  if (!assunto || !mensagem) {
+    alert("preencha todos os campos");
+    return;
+  }
+  const formData = {
+    subject: assunto,
+    message: mensagem,
+    status: "resolvido",
+  };
+  try {
+    const response = await genericFetch(
+      `/tickets/${denunciaId}/answer`,
+      {},
+      "POST",
+      JSON.stringify(formData)
+    );
+    let data = await response.json();
+    try{
+      const response = await genericFetch(`/post/${postId}`, {}, "DELETE");
+      console.log(await response.json());
+    } catch(error){
+      console.log(error);
+    }
+    alert("Denuncia respondida com sucesso!");
+    sessionStorage.setItem("denunciaId", null);
+    sessionStorage.setItem("denuncia", null);
+    sessionStorage.setItem("postId", null);
+    // window.location.href = "denuncias.html";
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 document
   .querySelector(".btnEnviar")
   .addEventListener("click", async function () {
     responder();
   });
 
+document
+  .querySelector(".btnEnviarEExcluir")
+  .addEventListener("click", async function () {
+    responderAndExcluir();
+  });
+
 document.querySelectorAll(".apagarDenuncia").forEach((container) => {
   const removeIcon = container.querySelector(".removeIcon");
 
   removeIcon.addEventListener("click", (event) => {
-    
+
     event.stopPropagation();
 
-    
+
     const confirmationCard = document.createElement("div");
     confirmationCard.classList.add("confirmationCard");
     confirmationCard.innerHTML = `
@@ -193,43 +229,41 @@ document.querySelectorAll(".apagarDenuncia").forEach((container) => {
     `;
     document.body.appendChild(confirmationCard);
 
-    
+
     confirmationCard.style.display = "block";
 
-    
+
     confirmationCard.querySelector(".yesBtn").addEventListener("click", async () => {
       alert("Post apagado com sucesso.");
       const postId = container.closest(".denuncia").dataset.id;
 
-        try {
-        await deletePost(postId); 
-        confirmationCard.remove(); 
-        container.closest(".denuncia").remove(); 
-        
+      try {
+        await deletePost(postId);
+        confirmationCard.remove();
+        container.closest(".denuncia").remove();
+
       } catch (error) {
         console.error("Erro ao apagar post:", error);
         alert("Não foi possível apagar o post. Tente novamente.");
       }
     });
 
-      confirmationCard.querySelector(".noBtn").addEventListener("click", () => {
-        confirmationCard.remove(); 
-
-        
-      });
-
-    
     confirmationCard.querySelector(".noBtn").addEventListener("click", () => {
-      confirmationCard.remove(); 
+      confirmationCard.remove();
+
+
+    });
+
+
+    confirmationCard.querySelector(".noBtn").addEventListener("click", () => {
+      confirmationCard.remove();
     });
   });
 });
 
 async function deletePost(postId) {
   try {
-    const response = await apiFetch(`/posts/${postId}`, {
-      method: "DELETE",
-    });
+    const response = await genericFetch(`/post/${postId}`, {}, "DELETE");
 
     if (response.ok) {
       console.log("Post deletado com sucesso");
@@ -238,6 +272,6 @@ async function deletePost(postId) {
     }
   } catch (error) {
     console.error("Erro ao deletar o post:", error);
-    throw error; 
+    throw error;
   }
 }
