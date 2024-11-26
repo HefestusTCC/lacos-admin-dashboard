@@ -10,7 +10,6 @@ const getRecentPosts = async () => {
 }
 let postagensRecentes = await getRecentPosts();
 document.getElementById('recent-posts').innerText = postagensRecentes;
-console.log(postagensRecentes);
 
 
 

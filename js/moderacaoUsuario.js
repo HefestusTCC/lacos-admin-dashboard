@@ -5,6 +5,8 @@ window.onload = function () {
   loadUsers();
 };
 
+var message;
+
 async function loadUsers() {
   $("#listaUsuarios").empty();
 
@@ -166,11 +168,7 @@ function handleBanUser(userId) {
 
   // Exibir feedback padrão
   $("#standardFeedback").on("click", function () {
-    $("#feedbackMessage").html(`
-      <p>Aviso de Banimento:
-
-Seu acesso à plataforma foi temporariamente suspenso devido ao descumprimento das nossas diretrizes de conduta. Agradecemos a compreensão e pedimos que leia nossas políticas para evitar problemas futuros. Caso tenha dúvidas ou queira mais informações, entre em contato com nossa equipe de suporte através do email hefestustcc@gmail.com.</p>
-    `);
+    $("#feedbackMessage").html(`<p>Aviso de Banimento: Seu acesso à plataforma foi temporariamente suspenso devido ao descumprimento das nossas diretrizes de conduta. Agradecemos a compreensão e pedimos que leia nossas políticas para evitar problemas futuros. Caso tenha dúvidas ou queira mais informações, entre em contato com nossa equipe de suporte através do email hefestustcc@gmail.com.</p>`);
     $("#sendFeedback").show(); // Mostrar botão de enviar feedback
   });
 
@@ -192,20 +190,18 @@ Seu acesso à plataforma foi temporariamente suspenso devido ao descumprimento d
     // Atualizar mensagem de feedback com base na seleção
     $("#banReason").on("change", function () {
       const reason = $(this).val();
-      let message;
-
       switch (reason) {
         case "assédio":
           message =
-            "Seu acesso à plataforma foi suspenso devido a comportamentos inaceitáveis, incluindo assédio a outros usuários. Respeitamos a todos em nossa comunidade e qualquer forma de assédio, seja verbal ou de outra natureza, é contra nossas diretrizes. Pedimos que revise nossas políticas para garantir um ambiente seguro e saudável para todos. Agradecemos a compreensão.";
+            "Seu acesso à plataforma foi suspenso devido a comportamentos inaceitáveis, incluindo assédio a outros usuários. Respeitamos a todos em nossa comunidade e qualquer forma de assédio, seja verbal ou de outra natureza, é contra nossas diretrizes.";
           break;
         case "discriminação":
           message =
-            "Seu acesso à plataforma foi suspenso devido a atitudes discriminatórias. Qualquer forma de discriminação, seja por raça, gênero, orientação sexual, religião ou qualquer outra característica pessoal, vai contra as nossas diretrizes. Pedimos que reveja nossas políticas e comportamentos para garantir um ambiente respeitoso e inclusivo para todos. Agradecemos a compreensão.";
+            "Seu acesso à plataforma foi suspenso devido a atitudes discriminatórias. Qualquer forma de discriminação, seja por raça, gênero, orientação sexual, religião ou qualquer outra característica pessoal, vai contra as nossas diretrizes.";
           break;
         case "spam":
           message =
-            "Seu acesso à plataforma foi suspenso devido à prática de envio de conteúdo repetitivo ou indesejado (spam). Essa prática prejudica a experiência dos outros usuários e vai contra as nossas diretrizes. Pedimos que reveja as políticas de uso da plataforma e evite esse tipo de comportamento. Agradecemos a compreensão.";
+            "Seu acesso à plataforma foi suspenso devido à prática de envio de conteúdo repetitivo ou indesejado (spam). Essa prática prejudica a experiência dos outros usuários e vai contra as nossas diretrizes.";
           break;
         case "outros":
           message = "O usuário foi banido por motivos não especificados.";
@@ -219,12 +215,9 @@ Seu acesso à plataforma foi temporariamente suspenso devido ao descumprimento d
   // Enviar feedback e banir o usuário
   $("#sendFeedback").on("click", async function () {
     // Obter o feedback baseado no tipo escolhido
-    const feedbackMessage = $("#feedbackMessage").text();
-    const banReason = $("#banReason").val() || "feedback padrão";
-
-    // Enviar feedback (pode ser via API ou outra forma de comunicação)
-    await sendFeedback(userId, feedbackMessage);
-
+    const feedbackMessage = "Seu acesso à plataforma foi temporariamente suspenso devido ao descumprimento das nossas diretrizes de conduta. Caso tenha dúvidas ou queira mais informações, entre em contato com nossa equipe de suporte através do email hefestustcc@gmail.com."
+    const banReason = message || feedbackMessage;
+    console.log(banReason);
     // Banir o usuário (usar a API ou método adequado)
     await banUser(userId, banReason);
 
@@ -249,14 +242,14 @@ async function sendFeedback(userId, feedbackMessage) {
 
 // Função para banir o usuário
 async function banUser(userId, reason) {
+  let reasonData = {
+    "reason": reason
+  }
   try {
-    const response = await genericFetch(`/admin/users/${userId}/ban`, {
-      method: "POST",
-      body: JSON.stringify({ reason }),
-      headers: { "Content-Type": "application/json" },
-    });
-    console.log("Usuário banido:", response);
+    const response = await genericFetch(`/admin/users/${userId}/ban`, {}, "POST", JSON.stringify(reasonData));
+    // console.log("Usuário banido:", response.data);
+    window.location.reload();
   } catch (error) {
-    console.error("Erro ao banir usuário:", error);
+    console.error(error);
   }
 }
